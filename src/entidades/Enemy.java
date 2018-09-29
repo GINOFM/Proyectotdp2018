@@ -114,4 +114,10 @@ public class Enemy extends Entity{
 		this.intgc = intgc;
 	}
 
+
+	@Override
+	public int obtenerPuntaje() {
+		return 10;
+	}
+
 }

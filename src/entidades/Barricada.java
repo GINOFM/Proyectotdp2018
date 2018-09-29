@@ -47,4 +47,10 @@ public class Barricada extends Obstaculo {
 		
 	}
 
+	@Override
+	public int obtenerPuntaje() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

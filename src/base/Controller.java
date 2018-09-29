@@ -1,5 +1,7 @@
 package base;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
@@ -25,9 +27,10 @@ public class Controller {
 	private Entity entidad;
 	private Entity entidadAux;
 	private Player player;
-	
+	private int puntaje;
 	public Controller() {
 		player=new Player(200,420);
+		puntaje=0;
 		/*
 		Enemy enemigo = new Enemy(200, 10, this);
 		Enemy enemigo2 = new Enemy(400, 10, this);
@@ -84,6 +87,7 @@ public class Controller {
 
 		for (int i = 0; i < entidadesABorrar.size(); i++) {
 			entidad = entidadesABorrar.get(i);
+			puntaje=puntaje+entidad.obtenerPuntaje();
 			entidades.remove(entidad);
 		}
 		
@@ -154,6 +158,10 @@ public class Controller {
 //	}
 
 	public void render(Graphics g) {
+		Font fnt0 = new Font("arial",Font.BOLD,20);
+		g.setFont(fnt0);
+		g.setColor(Color.white);
+		g.drawString("Puntaje: "+puntaje, 10, 470);
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
 			entidad.render(g);

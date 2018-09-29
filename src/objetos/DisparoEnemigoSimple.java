@@ -45,4 +45,10 @@ public class DisparoEnemigoSimple extends DisparoEnemigo {
 		e.quitaVida(5);
 	}
 
+	@Override
+	public int obtenerPuntaje() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

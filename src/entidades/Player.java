@@ -102,4 +102,9 @@ public class Player extends Entity{
 	public void setIsShooting(boolean valor) {
 		isShooting = valor;
 	}
+
+	@Override
+	public int obtenerPuntaje() {
+		return 0;
+	}
 }

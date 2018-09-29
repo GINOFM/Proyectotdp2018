@@ -48,4 +48,10 @@ public class DisparoJSimple extends DisparoJugador {
 	public void golpear(Entity e) {
 		e.quitaVida(10);
 	}
+
+	@Override
+	public int obtenerPuntaje() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
