@@ -6,8 +6,7 @@ import base.ColDisparoJugador;
 import base.ColEnemigo;
 import base.Colisionador;
 import base.Controller;
-import inteligencias.Inteligenciadirigida;
-import inteligencias.inteligencia;
+import inteligencias.Inteligencia;
 import objetos.DisparoEnemigoSimple;
 
 public class Enemy extends Entity{
@@ -22,7 +21,7 @@ public class Enemy extends Entity{
 	private int limiteXIzq;
 	private int limiteXDer;
 
-	private inteligencia intgc;
+	private Inteligencia intgc;
 	
 	public Enemy(int x, int y, Controller c) {
 		super(x, y);
@@ -105,12 +104,12 @@ public class Enemy extends Entity{
 	}
 
 
-	public inteligencia getIntgc() {
+	public Inteligencia getIntgc() {
 		return intgc;
 	}
 
 
-	public void setIntgc(inteligencia intgc) {
+	public void setIntgc(Inteligencia intgc) {
 		this.intgc = intgc;
 	}
 

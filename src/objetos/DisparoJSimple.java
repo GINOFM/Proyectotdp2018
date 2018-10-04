@@ -8,7 +8,6 @@ import entidades.Entity;
 
 public class DisparoJSimple extends DisparoJugador {
 
-
 	public DisparoJSimple(int x, int y) {
 		super(x, y);
 		initCraft();
@@ -24,6 +23,8 @@ public class DisparoJSimple extends DisparoJugador {
 
 	public void update() {
 		y -= velocidadY;
+		if (y <= 0)
+			destruir();
 	}
 
 	public void render(Graphics g) {

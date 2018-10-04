@@ -12,9 +12,6 @@ import entidades.Barricada;
 import entidades.Enemy;
 import entidades.Entity;
 import entidades.Player;
-import inteligencias.Inteligenciaaleatoria;
-import inteligencias.Inteligenciadirigida;
-import inteligencias.inteligencia;
 
 public class Controller {
 

@@ -2,7 +2,7 @@ package inteligencias;
 
 import entidades.Entity;
 
-public class Inteligenciadirigida implements inteligencia {
+public class Inteligenciadirigida implements Inteligencia {
 	
 	
 	public Inteligenciadirigida() {}

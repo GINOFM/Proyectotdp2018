@@ -1,13 +1,13 @@
 package builders;
 
+import inteligencias.Inteligencia;
 import inteligencias.Inteligenciaaleatoria;
-import inteligencias.inteligencia;
 
 public class AleatorioBuilder extends Enemybuilder {
 
 	@Override
 	public void buildInteligencia() {
-		inteligencia inteligenciaO=new Inteligenciaaleatoria();
+		Inteligencia inteligenciaO=new Inteligenciaaleatoria();
 		enemigo.setIntgc(inteligenciaO);
 		
 	}

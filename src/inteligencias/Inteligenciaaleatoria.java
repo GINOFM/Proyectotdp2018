@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import entidades.Entity;
 
-public class Inteligenciaaleatoria implements inteligencia {
+public class Inteligenciaaleatoria implements Inteligencia {
 
 	private int puntox;
 	private int puntoy;
