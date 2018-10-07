@@ -30,9 +30,6 @@ public class Game extends Canvas implements Runnable {
 		c = new Controller();
 		addKeyListener(new KeyInput(c));
 
-	//	player = new Player(200, 420);
-
-		//c.addEntity(player);
 	}
 
 	private synchronized void start() {
@@ -108,19 +105,7 @@ public class Game extends Canvas implements Runnable {
 	public static int getScale() {
 		return SCALE;
 	}
-/*
-	public Player getPlayer() {
-		return player;
-	}
 
-	public boolean getIsShooting() {
-		return isShooting;
-	}
-
-	public void setIsShooting(boolean valor) {
-		isShooting = valor;
-	}
-*/
 	public static void main(String args[]) {
 		Game game = new Game();
 

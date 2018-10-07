@@ -23,7 +23,7 @@ public class Player extends Entity{
 
 	protected void initCraft() {
 
-		loadImage("resources/spaceship.png");
+		loadImage("resources/player_spaceship.png");
 		getImageDimensions();
 		nivelDisparo = 1;
 		salud = 20;

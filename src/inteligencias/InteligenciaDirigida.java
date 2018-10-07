@@ -2,10 +2,10 @@ package inteligencias;
 
 import entidades.Entity;
 
-public class Inteligenciadirigida implements Inteligencia {
+public class InteligenciaDirigida implements Inteligencia {
 	
 	
-	public Inteligenciadirigida() {}
+	public InteligenciaDirigida() {}
 	
 	public void mover(Entity entidad,Entity objetivo)
 	{

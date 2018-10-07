@@ -1,14 +1,13 @@
 package builders;
 
 import inteligencias.Inteligencia;
-import inteligencias.Inteligenciadirigida;
+import inteligencias.InteligenciaDirigida;
 
 public class KamikazeBuilder extends Enemybuilder {
 
-	@Override
 	public void buildInteligencia() {
 
-		Inteligencia inteligenciaO = new Inteligenciadirigida();
+		Inteligencia inteligenciaO = new InteligenciaDirigida();
 		enemigo.setIntgc(inteligenciaO);
 	}
 

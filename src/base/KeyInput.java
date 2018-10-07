@@ -3,7 +3,6 @@ package base;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-
 public class KeyInput extends KeyAdapter {
 
 	private Controller c;
@@ -21,7 +20,6 @@ public class KeyInput extends KeyAdapter {
 		} else if (key == KeyEvent.VK_SPACE && !c.getPlayer().getIsShooting()) {
 			c.getPlayer().setIsShooting(true);
 			c.getPlayer().disparar(c);
-		//	game.getControler().addEntity(new DisparoSimple(game.getPlayer().getX() + 16, game.getPlayer().getY() - 12));
 		}
 	}
 

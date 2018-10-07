@@ -14,7 +14,6 @@ public abstract class Enemybuilder {
 	
 	public void crearEnemigo(int x,int y,Controller c)
 	{
-		
 		enemigo = new Enemy(x,y,c);
 	}
 	
