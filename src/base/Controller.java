@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import builders.AleatorioBuilder;
 import builders.FabricaEnemys;
 import builders.KamikazeBuilder;
+import entidades.Barricada;
 import entidades.Enemy;
 import entidades.Entity;
 import entidades.Player;
@@ -40,6 +41,10 @@ public class Controller {
 		addEntity(enemigo);
 		addEntity(enemigo2);
 		addEntity(enemigo3);
+		Entity barrera1 = new Barricada(100, 320);
+		Entity barrera2 = new Barricada(500, 320);
+		addEntity(barrera1);
+		addEntity(barrera2);
 
 	}
 

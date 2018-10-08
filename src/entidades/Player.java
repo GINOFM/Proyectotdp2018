@@ -53,7 +53,7 @@ public class Player extends Entity{
 	}
 	
 	public void disparar(Controller c) {
-		c.addEntity(new DisparoJSimple(x + 16, y - 12));
+		c.addEntity(new DisparoJSimple(x + 12, y - 12));
 		if(nivelDisparo > 1) {
 			c.addEntity(new DisparoJSimple(x, y - 4));
 			c.addEntity(new DisparoJSimple(x + 32, y - 4));

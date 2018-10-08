@@ -13,7 +13,7 @@ public class Barricada extends Obstaculo {
 
 	protected void initCraft() {
 		salud = 20;
-		loadImage("resources/obstaculo.png");
+		loadImage("resources/barrera.png");
 		getImageDimensions();
 	}
 
