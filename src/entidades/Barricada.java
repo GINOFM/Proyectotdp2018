@@ -2,6 +2,7 @@ package entidades;
 
 import java.awt.Graphics;
 
+import base.ColBarricada;
 import base.Colisionador;
 
 public class Barricada extends Obstaculo {
@@ -12,9 +13,10 @@ public class Barricada extends Obstaculo {
 	}
 
 	protected void initCraft() {
-		salud = 20;
+		salud = 50;
 		loadImage("resources/barrera.png");
 		getImageDimensions();
+		col = new ColBarricada(this);
 	}
 
 	public void update() {
@@ -26,25 +28,22 @@ public class Barricada extends Obstaculo {
 	}
 
 	public void serChocado(Colisionador col) {
-		
+		col.chocaObstaculo(this);
 	}
 
-	@Override
 	public void chocar(Entity e) {
-		// TODO Auto-generated method stub
-		
+		e.serChocado(col);
 	}
 
-	@Override
 	public void quitaVida(int dmg) {
-		// TODO Auto-generated method stub
-		
+		salud = salud - dmg;
+		if(salud <= 0) {
+			destruir();
+		}
 	}
 
-	@Override
 	public void golpear(Entity e) {
-		// TODO Auto-generated method stub
-		
+		e.quitaVida(10);
 	}
 
 	@Override

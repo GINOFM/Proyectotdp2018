@@ -15,4 +15,5 @@ public abstract class Colisionador {
 	public abstract void chocaJugador(Entity e);
 	
 	public abstract void chocaObstaculo(Entity e);
+	
 }

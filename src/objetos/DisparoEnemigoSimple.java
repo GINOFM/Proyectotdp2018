@@ -23,6 +23,8 @@ public class DisparoEnemigoSimple extends DisparoEnemigo {
 
 	public void update() {
 		y += velocidadY;
+		if (y >= 480)
+			destruir();
 	}
 
 	public void render(Graphics g) {

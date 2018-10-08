@@ -38,7 +38,7 @@ public class Enemy extends Entity {
 	}
 
 	public void update() {
-		
+
 		// testeo cambio de inteligencia cuando se sale de los limites
 		if (outOfBounds()) {
 			y = 0;
@@ -51,10 +51,12 @@ public class Enemy extends Entity {
 		 * 
 		 * hacer inteligencia if(x < limiteXIzq) { cambiarDireccion(); } else if (x >
 		 * limiteXDer) { cambiarDireccion(); }
-		 * 
-		 * long now = System.currentTimeMillis(); if ((now - lastTime) / 60 > 22) {
-		 * lastTime = now; disparar(); }
 		 */
+		long now = System.currentTimeMillis();
+		if ((now - lastTime) / 60 > 22) {
+			lastTime = now;
+			disparar();
+		}
 
 	}
 

@@ -25,10 +25,8 @@ public class ColDisparoJugador extends Colisionador{
 		
 	}
 
-	@Override
-	public void chocaObstaculo(Entity e) {
-		// TODO Auto-generated method stub
-		
+	public void chocaObstaculo(Entity e) {	
+		entidad.golpear(e);
 	}
 
 }
