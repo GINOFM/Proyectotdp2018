@@ -55,7 +55,7 @@ public class InteligenciaAleatoria implements Inteligencia {
 	}
 
 	public void setPuntoy() {
-		int randomNum = ThreadLocalRandom.current().nextInt(1, 240*2 + 1);
+		int randomNum = ThreadLocalRandom.current().nextInt(1, 250 + 1);
 		puntoy=randomNum;
 	}
 

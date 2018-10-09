@@ -28,7 +28,7 @@ public class Barricada extends Obstaculo {
 	}
 
 	public void serChocado(Colisionador col) {
-		col.chocaObstaculo(this);
+		col.chocaBarricada(this);
 	}
 
 	public void chocar(Entity e) {

@@ -10,6 +10,7 @@ import builders.KamikazeBuilder;
 import entidades.Barricada;
 import entidades.Enemy;
 import entidades.Entity;
+import entidades.Escombro;
 import entidades.Player;
 
 public class Controller {
@@ -41,10 +42,21 @@ public class Controller {
 		addEntity(enemigo);
 		addEntity(enemigo2);
 		addEntity(enemigo3);
+		
+		//
 		Entity barrera1 = new Barricada(100, 320);
 		Entity barrera2 = new Barricada(500, 320);
+		Entity escombro1 = new Escombro(250, 300);
+		Entity escombro2 = new Escombro(400, 250);
+		Entity escombro3 = new Escombro(310, 270);
+		Entity escombro4 = new Escombro(200, 250);
 		addEntity(barrera1);
 		addEntity(barrera2);
+		addEntity(escombro1);
+		addEntity(escombro2);
+		addEntity(escombro3);
+		addEntity(escombro4);
+
 
 	}
 

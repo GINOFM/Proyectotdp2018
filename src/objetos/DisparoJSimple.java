@@ -47,6 +47,7 @@ public class DisparoJSimple extends DisparoJugador {
 
 	@Override
 	public void golpear(Entity e) {
+		System.out.println("hiy");
 		e.quitaVida(10);
 	}
 
