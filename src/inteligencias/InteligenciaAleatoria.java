@@ -15,7 +15,7 @@ public class InteligenciaAleatoria implements Inteligencia {
 		setPuntoy();
 	}
 	
-	public void mover(Entity entidad, Entity objetivo) {
+	public void mover(Entity entidad) {
 
 		if(puntox>entidad.getX())
 		{

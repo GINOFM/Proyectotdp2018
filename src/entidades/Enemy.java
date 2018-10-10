@@ -44,7 +44,7 @@ public class Enemy extends Entity {
 			y = 0;
 			intgc = new InteligenciaAleatoria();
 		}
-		intgc.mover(this, controller.getPlayer());
+		intgc.mover(this);
 
 		/*
 		 * x += direccion * velocidad;
