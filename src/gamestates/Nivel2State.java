@@ -9,6 +9,10 @@ import entidades.Escombro;
 
 public class Nivel2State extends NivelState {
 
+	public Nivel2State(GameStateManager gsm) {
+		super(gsm);
+	}
+
 	@Override
 	public void init() {
 		fabrica.setEnemyBuilder(new KamikazeBuilder());

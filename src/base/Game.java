@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
@@ -26,6 +27,7 @@ public class Game extends Canvas implements Runnable {
 		requestFocus();
 		gameStateManager = new GameStateManager();
 		addKeyListener(new KeyInput(this));
+		addMouseListener(new MouseInput(this));
 	}
 
 	private synchronized void start() {
@@ -127,6 +129,10 @@ public class Game extends Canvas implements Runnable {
 	
 	public void keyReleased(KeyEvent e) {
 		gameStateManager.getGameState().keyReleased(e);
+	}
+
+	public void mouseClicked(MouseEvent e) {
+		gameStateManager.getGameState().mouseClicked(e);
 	}
 
 

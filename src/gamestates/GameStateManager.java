@@ -7,7 +7,7 @@ public class GameStateManager {
 	private GameState actualGameState;
 
 	public GameStateManager() {
-		actualGameState = new Nivel1State();
+		actualGameState = new MenuState(this);
 		actualGameState.init();
 	}
 	
@@ -31,5 +31,4 @@ public class GameStateManager {
 	public GameState getGameState() {
 		return actualGameState;
 	}
-	
 }

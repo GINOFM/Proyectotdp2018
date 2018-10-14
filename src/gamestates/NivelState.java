@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 
 import base.Fondo;
@@ -23,12 +24,13 @@ public abstract class NivelState extends GameState {
 	private Fondo fondo;
 	FabricaEnemys fabrica;
 
-	public NivelState() {
+	public NivelState(GameStateManager gsm) {
 		fondo = new Fondo();
 		player = new Player(200, 420, this);
 		puntaje = 0;
 		addEntity(player);
 		fabrica = new FabricaEnemys();
+		gameStateManager = gsm;
 	}
 
 	public void update() {
@@ -109,6 +111,12 @@ public abstract class NivelState extends GameState {
 		} else if (key == KeyEvent.VK_SPACE) {
 			player.setIsShooting(false);
 		}
+
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
 
 	}
 
