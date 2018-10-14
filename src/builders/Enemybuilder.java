@@ -1,23 +1,23 @@
 package builders;
 
-import base.Controller;
 import entidades.Enemy;
+import gamestates.NivelState;
 
 public abstract class Enemybuilder {
 	
 	protected Enemy enemigo;
-	protected Controller controlador;
+	protected NivelState nivel;
 	
 	public Enemy getEnemigo()
 	{
 		return enemigo;
 	}
 	
-	public void crearEnemigo(int x,int y,Controller c)
+	public void crearEnemigo(int x,int y, NivelState nivel)
 	{
-		controlador=c;
+		this.nivel = nivel;
 		
-		enemigo = new Enemy(x,y,controlador);
+		enemigo = new Enemy(x,y, nivel);
 	}
 	
 	public abstract void buildInteligencia();

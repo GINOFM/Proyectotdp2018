@@ -1,19 +1,17 @@
-package base;
+package gamestates;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.util.LinkedList;
-import builders.AleatorioBuilder;
+
+import base.Fondo;
 import builders.FabricaEnemys;
-import builders.KamikazeBuilder;
-import entidades.Barricada;
-import entidades.Enemy;
 import entidades.Entity;
-import entidades.Escombro;
 import entidades.Player;
 
-public class Controller {
+public abstract class NivelState extends GameState {
 
 	private LinkedList<Entity> entidades = new LinkedList<Entity>();
 	private LinkedList<Entity> entidadesABorrar = new LinkedList<Entity>();
@@ -23,47 +21,14 @@ public class Controller {
 	private Player player;
 	private int puntaje;
 	private Fondo fondo;
+	FabricaEnemys fabrica;
 
-	public Controller() {
+	public NivelState() {
 		fondo = new Fondo();
-		player = new Player(200, 420);
+		player = new Player(200, 420, this);
 		puntaje = 0;
-
 		addEntity(player);
-		FabricaEnemys fabrica = new FabricaEnemys();
-		fabrica.setEnemyBuilder(new KamikazeBuilder());
-		fabrica.construirEnemigo(200, 100, this);
-		Enemy enemigo = fabrica.getEnemigo();
-		fabrica.setEnemyBuilder(new AleatorioBuilder());
-		fabrica.construirEnemigo(400, 10, this);
-		Enemy enemigo2 = fabrica.getEnemigo();
-		fabrica.construirEnemigo(600, 10, this);
-		Enemy enemigo3 = fabrica.getEnemigo();
-		fabrica.construirEnemigo(100, 30, this);
-		Enemy enemigo4 = fabrica.getEnemigo();
-		fabrica.construirEnemigo(450, 50, this);
-		Enemy enemigo5 = fabrica.getEnemigo();
-		addEntity(enemigo);
-		addEntity(enemigo2);
-		addEntity(enemigo3);
-		addEntity(enemigo4);
-		addEntity(enemigo5);
-		
-		//
-		Entity barrera1 = new Barricada(100, 320);
-		Entity barrera2 = new Barricada(500, 320);
-		Entity escombro1 = new Escombro(250, 300);
-		Entity escombro2 = new Escombro(400, 320);
-		Entity escombro3 = new Escombro(310, 270);
-		Entity escombro4 = new Escombro(200, 290);
-		addEntity(barrera1);
-		addEntity(barrera2);
-		addEntity(escombro1);
-		addEntity(escombro2);
-		addEntity(escombro3);
-		addEntity(escombro4);
-
-
+		fabrica = new FabricaEnemys();
 	}
 
 	public void update() {
@@ -107,12 +72,11 @@ public class Controller {
 		Font fnt0 = new Font("arial", Font.BOLD, 20);
 		g.setFont(fnt0);
 		g.setColor(Color.white);
-		g.drawString("Puntaje: " + puntaje, 10, 470);
+		g.drawString("Puntaje: " + puntaje, 10, 460);
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
 			entidad.render(g);
 		}
-
 	}
 
 	public void addEntity(Entity entity) {
@@ -121,6 +85,31 @@ public class Controller {
 
 	public Player getPlayer() {
 		return player;
+	}
+
+	public void keyPressed(KeyEvent e) {
+		int key = e.getKeyCode();
+		if (key == KeyEvent.VK_RIGHT) {
+			player.setVelX(5);
+		} else if (key == KeyEvent.VK_LEFT) {
+			player.setVelX(-5);
+		} else if (key == KeyEvent.VK_SPACE && !player.getIsShooting()) {
+			player.setIsShooting(true);
+			player.disparar();
+		}
+
+	}
+
+	public void keyReleased(KeyEvent e) {
+		int key = e.getKeyCode();
+		if (key == KeyEvent.VK_RIGHT) {
+			player.setVelX(0);
+		} else if (key == KeyEvent.VK_LEFT) {
+			player.setVelX(0);
+		} else if (key == KeyEvent.VK_SPACE) {
+			player.setIsShooting(false);
+		}
+
 	}
 
 }

@@ -5,29 +5,27 @@ import java.awt.Graphics;
 import base.ColDisparoJugador;
 import base.ColEnemigo;
 import base.Colisionador;
-import base.Controller;
+import gamestates.NivelState;
 import inteligencias.Inteligencia;
 import inteligencias.InteligenciaAleatoria;
 import objetos.DisparoEnemigoSimple;
 
 public class Enemy extends Entity {
 
-	private int velocidad;
 	private int direccion;
 	private int salud;
 	private long lastTime;
-	private Controller controller;
+	private NivelState nivel;
 	protected Colisionador col;
 
 	private Inteligencia intgc;
 
-	public Enemy(int x, int y, Controller c) {
+	public Enemy(int x, int y, NivelState nivel) {
 		super(x, y);
-		velocidad = 3;
 		direccion = -1;
 		salud = 30;
 		initCraft();
-		controller = c;
+		this.nivel = nivel;
 	}
 
 	protected void initCraft() {
@@ -39,19 +37,12 @@ public class Enemy extends Entity {
 
 	public void update() {
 
-		// testeo cambio de inteligencia cuando se sale de los limites
 		if (outOfBounds()) {
 			y = 0;
 			intgc = new InteligenciaAleatoria();
 		}
 		intgc.mover(this);
 
-		/*
-		 * x += direccion * velocidad;
-		 * 
-		 * hacer inteligencia if(x < limiteXIzq) { cambiarDireccion(); } else if (x >
-		 * limiteXDer) { cambiarDireccion(); }
-		 */
 		long now = System.currentTimeMillis();
 		if ((now - lastTime) / 60 > 22) {
 			lastTime = now;
@@ -68,12 +59,8 @@ public class Enemy extends Entity {
 		direccion = direccion * (-1);
 	}
 
-	public void avanzar() {
-		y += 20;
-	}
-
 	public void disparar() {
-		controller.addEntity(new DisparoEnemigoSimple(x, y + 15));
+		nivel.addEntity(new DisparoEnemigoSimple(x, y + 15));
 	}
 
 	public void chocar(Entity e) {
@@ -98,10 +85,6 @@ public class Enemy extends Entity {
 		e.quitaVida(1);
 	}
 
-	public Inteligencia getIntgc() {
-		return intgc;
-	}
-
 	public void setIntgc(Inteligencia intgc) {
 		this.intgc = intgc;
 	}
@@ -111,11 +94,6 @@ public class Enemy extends Entity {
 		return 10;
 	}
 
-	public boolean outOfBounds() {
-		if (x < 0 || y < 0 || y > 480 || y > 640)
-			return true;
-		else
-			return false;
-	}
+	
 
 }

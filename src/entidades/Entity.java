@@ -81,5 +81,12 @@ public abstract class Entity {
 	}
 
 	public abstract int obtenerPuntaje();
+	
+	public boolean outOfBounds() {
+		if (x < 0 || y < 0 || y > 480 || y > 640)
+			return true;
+		else
+			return false;
+	}
 
 }

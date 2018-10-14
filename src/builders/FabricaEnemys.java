@@ -1,22 +1,22 @@
 package builders;
 
-import base.Controller;
 import entidades.Enemy;
+import gamestates.NivelState;
 
 public class FabricaEnemys {
 
-	private Enemybuilder EnemigoB;
+	private Enemybuilder enemigoBuilder;
 
 	public void setEnemyBuilder(Enemybuilder eb) {
-		EnemigoB = eb;
+		enemigoBuilder = eb;
 	}
 
-	public void construirEnemigo(int x, int y, Controller c) {
-		EnemigoB.crearEnemigo(x, y, c);
-		EnemigoB.buildInteligencia();
+	public void construirEnemigo(int x, int y, NivelState nivel) {
+		enemigoBuilder.crearEnemigo(x, y, nivel);
+		enemigoBuilder.buildInteligencia();
 	}
 
 	public Enemy getEnemigo() {
-		return EnemigoB.getEnemigo();
+		return enemigoBuilder.getEnemigo();
 	}
 }

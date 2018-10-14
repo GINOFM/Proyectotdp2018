@@ -3,34 +3,22 @@ package base;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import gamestates.GameState;
+import gamestates.NivelState;
+
 public class KeyInput extends KeyAdapter {
 
-	private Controller c;
+	private Game juego;
 
-	public KeyInput(Controller c) {
-		this.c = c;
+	public KeyInput(Game juego) {
+		this.juego = juego;
 	}
 
 	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_RIGHT) {
-			c.getPlayer().setVelX(5);
-		} else if (key == KeyEvent.VK_LEFT) {
-			c.getPlayer().setVelX(-5);
-		} else if (key == KeyEvent.VK_SPACE && !c.getPlayer().getIsShooting()) {
-			c.getPlayer().setIsShooting(true);
-			c.getPlayer().disparar(c);
-		}
+		juego.keyPressed(e);
 	}
 
 	public void keyReleased(KeyEvent e) {
-		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_RIGHT) {
-			c.getPlayer().setVelX(0);
-		} else if (key == KeyEvent.VK_LEFT) {
-			c.getPlayer().setVelX(0);
-		} else if (key == KeyEvent.VK_SPACE) {
-			c.getPlayer().setIsShooting(false);
-		}
+		juego.keyReleased(e);
 	}
 }

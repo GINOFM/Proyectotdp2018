@@ -3,21 +3,23 @@ package entidades;
 import java.awt.Graphics;
 import base.ColJugador;
 import base.Colisionador;
-import base.Controller;
+import gamestates.NivelState;
 import objetos.DisparoJSimple;
 
 public class Player extends Entity{
 
-	private int velocidadX = 0;
+	private int velocidadX;
 	private Escudo miEscudo;
 	private int nivelDisparo;
 	private int salud;
 	private boolean activo;
 	private Colisionador col;
 	private boolean isShooting=false;
+	private NivelState nivel;
 	
-	public Player(int x, int y) {
+	public Player(int x, int y, NivelState nivelState) {
 		super(x, y);
+		nivel = nivelState;
 		initCraft();
 	}
 
@@ -29,6 +31,7 @@ public class Player extends Entity{
 		salud = 20;
 		activo = true;
 		col = new ColJugador(this);
+		velocidadX = 0;
 	}
 
 	public void update() {
@@ -36,8 +39,8 @@ public class Player extends Entity{
 
 		if (x <= 0)
 			x = 0;
-		if (x >= 640 - 20)
-			x = 640 - 20;
+		if (x >= 640 - 30)
+			x = 640 - 30;
 	}
 
 	public void render(Graphics g) {
@@ -52,11 +55,11 @@ public class Player extends Entity{
 		this.miEscudo = miEscudo;
 	}
 	
-	public void disparar(Controller c) {
-		c.addEntity(new DisparoJSimple(x + 12, y - 12));
+	public void disparar() {
+		nivel.addEntity(new DisparoJSimple(x + 12, y - 12));
 		if(nivelDisparo > 1) {
-			c.addEntity(new DisparoJSimple(x, y - 4));
-			c.addEntity(new DisparoJSimple(x + 32, y - 4));
+			nivel.addEntity(new DisparoJSimple(x, y - 4));
+			nivel.addEntity(new DisparoJSimple(x + 32, y - 4));
 		}
 	}
 	
