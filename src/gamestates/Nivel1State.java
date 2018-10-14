@@ -46,7 +46,13 @@ public class Nivel1State extends NivelState {
 		addEntity(escombro2);
 		addEntity(escombro3);
 		addEntity(escombro4);
+		
+		cantidadEnemigos = 5;
 
+	}
+
+	public void pasarAlSiguienteNivel() {
+		gameStateManager.switchState(new Nivel2State(gameStateManager));
 	}
 
 

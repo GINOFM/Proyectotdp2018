@@ -12,6 +12,8 @@ import entidades.Player;
 public class MenuState extends GameState {
 
 	protected Image fondo;
+	protected Image boton_jugar;
+	protected Image boton_salir;
 
 	public MenuState(GameStateManager gsm) {
 		gameStateManager = gsm;
@@ -20,6 +22,10 @@ public class MenuState extends GameState {
 	public void init() {
 		ImageIcon ii = new ImageIcon("resources/menu_principal.png");
 		fondo = ii.getImage();
+		ii = new ImageIcon("resources/boton_jugar.png");
+		boton_jugar = ii.getImage();
+		ii = new ImageIcon("resources/boton_salir.png");
+		boton_salir = ii.getImage();
 	}
 
 	public void update() {
@@ -28,6 +34,9 @@ public class MenuState extends GameState {
 
 	public void render(Graphics g) {
 		g.drawImage(fondo, 0, 0, null);
+		g.drawImage(boton_jugar, 240, 210, null);
+		g.drawImage(boton_salir, 240, 310, null);
+		
 	}
 
 	public Player getPlayer() {
@@ -48,9 +57,9 @@ public class MenuState extends GameState {
 
 	public void mouseClicked(MouseEvent e) {
 		if (e.getButton() == MouseEvent.BUTTON1) {
-			if (e.getX() > 220 && e.getX() < 390 && e.getY() > 190 && e.getY() < 250) {
+			if (e.getX() > 240 && e.getX() < 402 && e.getY() > 210 && e.getY() < 264) {
 				gameStateManager.switchState(new Nivel1State(gameStateManager));
-			} else if (e.getX() > 220 && e.getX() < 390 && e.getY() > 300 && e.getY() < 360) {
+			} else if (e.getX() > 240 && e.getX() < 402 && e.getY() > 310 && e.getY() < 364) {
 				System.exit(1);
 			}
 

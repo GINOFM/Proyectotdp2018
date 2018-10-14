@@ -22,6 +22,7 @@ public abstract class NivelState extends GameState {
 	private Player player;
 	private int puntaje;
 	private Fondo fondo;
+	protected int cantidadEnemigos;
 	FabricaEnemys fabrica;
 
 	public NivelState(GameStateManager gsm) {
@@ -66,7 +67,8 @@ public abstract class NivelState extends GameState {
 		}
 
 		entidadesABorrar.clear();
-
+		if (cantidadEnemigos == 0)
+			pasarAlSiguienteNivel();
 	}
 
 	public void render(Graphics g) {
@@ -118,6 +120,12 @@ public abstract class NivelState extends GameState {
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public abstract void pasarAlSiguienteNivel();
+	
+	public void descontarUnEnemigo() {
+		cantidadEnemigos--;
 	}
 
 }

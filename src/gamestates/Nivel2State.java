@@ -35,7 +35,15 @@ public class Nivel2State extends NivelState {
 		addEntity(barrera1);
 		addEntity(escombro1);
 		addEntity(escombro2);
+		
+		cantidadEnemigos = 3;
 
+	}
+
+	@Override
+	public void pasarAlSiguienteNivel() {
+		// TODO Auto-generated method stub
+		
 	}
 
 

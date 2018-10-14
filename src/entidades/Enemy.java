@@ -76,6 +76,7 @@ public class Enemy extends Entity {
 	public void quitaVida(int dmg) {
 		salud = salud - dmg;
 		if (salud <= 0) {
+			nivel.descontarUnEnemigo();
 			destruir();
 		}
 	}
