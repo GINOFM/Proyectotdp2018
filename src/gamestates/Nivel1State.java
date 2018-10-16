@@ -6,6 +6,7 @@ import entidades.Barricada;
 import entidades.Enemy;
 import entidades.Entity;
 import entidades.Escombro;
+import objetos.PowerUpArma;
 
 public class Nivel1State extends NivelState {
 
@@ -46,6 +47,9 @@ public class Nivel1State extends NivelState {
 		addEntity(escombro2);
 		addEntity(escombro3);
 		addEntity(escombro4);
+		
+		Entity powerUp = new PowerUpArma(100, 100);
+		addEntity(powerUp);
 		
 		cantidadEnemigos = 5;
 
