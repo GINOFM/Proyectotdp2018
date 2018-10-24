@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import base.ColDisparoJugador;
 import base.Colisionador;
 import entidades.Entity;
+import inteligencias.Inteligencia;
+import inteligencias.InteligenciaAscendenteRecta;
 
 public class DisparoJSimple extends DisparoJugador {
 
@@ -20,10 +22,11 @@ public class DisparoJSimple extends DisparoJugador {
 		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColDisparoJugador(this);
+		inteligencia = new InteligenciaAscendenteRecta();
 	}
 
 	public void update() {
-		y -= velocidadY;
+		inteligencia.mover(this);
 		if (y <= 0)
 			destruir();
 	}
@@ -62,4 +65,5 @@ public class DisparoJSimple extends DisparoJugador {
 		// TODO Auto-generated method stub
 		
 	}
+	
 }

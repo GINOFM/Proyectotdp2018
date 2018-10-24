@@ -4,18 +4,20 @@ import java.awt.Graphics;
 import base.ColJugador;
 import base.Colisionador;
 import gamestates.NivelState;
+import objetos.ArmaJugador;
+import objetos.ArmaJugadorDisparoSimple;
 import objetos.DisparoJSimple;
 
 public class Player extends Entity{
 	
 	private int velocidadX;
 	private Escudo miEscudo;
-	private int nivelDisparo;
 	private int salud;
 	private boolean activo;
 	private Colisionador col;
 	private boolean isShooting=false;
 	private int nivelNave;
+	private ArmaJugador miArma;
 	
 	private boolean moverIzquierda, moverDerecha;
 	private NivelState nivelActual;
@@ -33,13 +35,13 @@ public class Player extends Entity{
 		loadImage("resources/player_spaceship_02.png");
 		loadImage("resources/player_spaceship_03.png");
 		getImageDimensions();
-		nivelDisparo = 1;
 		salud = 20;
 		activo = true;
 		col = new ColJugador(this);
 		velocidadX = 5;
 		moverIzquierda = false;
 		moverDerecha = false;
+		miArma = new ArmaJugadorDisparoSimple(x, y, this);
 	}
 
 	public void update() {
@@ -68,11 +70,7 @@ public class Player extends Entity{
 	}
 	
 	public void disparar() {
-		nivelActual.addEntity(new DisparoJSimple(x + 12, y - 12));
-		if(nivelDisparo > 1) {
-			nivelActual.addEntity(new DisparoJSimple(x, y - 4));
-			nivelActual.addEntity(new DisparoJSimple(x + 32, y - 4));
-		}
+		miArma.disparar(nivelActual);
 	}
 	
 	public void dañar(int daño) {
@@ -133,8 +131,8 @@ public class Player extends Entity{
 	
 	public void mejorarNave() {
 		nivelNave++;
-		System.out.println("Nivel de nave: " + nivelNave);
 		imagenActual = images.get(nivelNave);
+		miArma.mejorarArma();
 	}
 
 	public void afectarPorPowerUp() {
@@ -143,5 +141,9 @@ public class Player extends Entity{
 	
 	public void setNivelActual(NivelState nivelActual) {
 		this.nivelActual = nivelActual;
+	}
+	
+	public void setArmaJugador(ArmaJugador nuevaArma) {
+		miArma = nuevaArma;
 	}
 }
