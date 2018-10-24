@@ -3,7 +3,6 @@ package gamestates;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-
 import entidades.Player;
 
 public abstract class GameState {
@@ -23,5 +22,9 @@ public abstract class GameState {
 	public abstract void keyReleased(KeyEvent e);
 
 	public abstract void mouseClicked(MouseEvent e);
+	
+	public void setGameStateManager(GameStateManager gameStateManager) {
+		this.gameStateManager = gameStateManager;
+	}
 	
 }

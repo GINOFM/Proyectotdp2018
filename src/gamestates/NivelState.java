@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.LinkedList;
-
 import base.Fondo;
 import builders.FabricaEnemys;
 import entidades.Entity;
@@ -19,19 +18,30 @@ public abstract class NivelState extends GameState {
 
 	private Entity entidad;
 	private Entity entidadAux;
-	private Player player;
-	private int puntaje;
-	private Fondo fondo;
+	
+	protected Player player;
+	protected int puntaje;
+	protected Fondo fondo;
 	protected int cantidadEnemigos;
 	FabricaEnemys fabrica;
 
 	public NivelState(GameStateManager gsm) {
+
+		gameStateManager = gsm;
 		fondo = new Fondo();
-		player = new Player(200, 420, this);
+		player = new Player(200, 410, this);
 		puntaje = 0;
-		addEntity(player);
 		fabrica = new FabricaEnemys();
 		gameStateManager = gsm;
+		addEntity(player);
+	}
+	
+	public NivelState(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo) {
+		this.player = player;
+		player.setNivelActual(this);
+		this.puntaje = puntaje;
+		this.fabrica = fabrica;
+		this.fondo = fondo;
 	}
 
 	public void update() {
@@ -62,7 +72,7 @@ public abstract class NivelState extends GameState {
 
 		for (int i = 0; i < entidadesABorrar.size(); i++) {
 			entidad = entidadesABorrar.get(i);
-			puntaje = puntaje + entidad.obtenerPuntaje();
+			sumarPuntaje(entidad.obtenerPuntaje());
 			entidades.remove(entidad);
 		}
 
@@ -72,31 +82,24 @@ public abstract class NivelState extends GameState {
 	}
 
 	public void render(Graphics g) {
-		fondo.render(g);
 		Font fnt0 = new Font("arial", Font.BOLD, 20);
 		g.setFont(fnt0);
 		g.setColor(Color.white);
-		g.drawString("Puntaje: " + puntaje, 10, 460);
+		
+		fondo.render(g);
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
 			entidad.render(g);
 		}
-	}
-
-	public void addEntity(Entity entity) {
-		entidades.add(entity);
-	}
-
-	public Player getPlayer() {
-		return player;
+		g.drawString("Puntaje: " + puntaje, 10, 460);
 	}
 
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_RIGHT) {
-			player.setVelX(5);
+			player.setRight(true);
 		} else if (key == KeyEvent.VK_LEFT) {
-			player.setVelX(-5);
+			player.setLeft(true);
 		} else if (key == KeyEvent.VK_SPACE && !player.getIsShooting()) {
 			player.setIsShooting(true);
 			player.disparar();
@@ -107,9 +110,9 @@ public abstract class NivelState extends GameState {
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_RIGHT) {
-			player.setVelX(0);
+			player.setRight(false);
 		} else if (key == KeyEvent.VK_LEFT) {
-			player.setVelX(0);
+			player.setLeft(false);
 		} else if (key == KeyEvent.VK_SPACE) {
 			player.setIsShooting(false);
 		}
@@ -123,9 +126,28 @@ public abstract class NivelState extends GameState {
 	}
 
 	public abstract void pasarAlSiguienteNivel();
+
+	public void addEntity(Entity entity) {
+		entidades.add(entity);
+	}
+	
+	public Player getPlayer() {
+		return player;
+	}
+
+	public FabricaEnemys getFabrica() {
+		return fabrica;
+	}
+	
+	public void sumarPuntaje(int puntos) {
+		puntaje = puntaje + puntos;
+	}
 	
 	public void descontarUnEnemigo() {
 		cantidadEnemigos--;
 	}
-
+	
+	public void limpiarListaEntidades() {
+		entidades.clear();
+	}
 }

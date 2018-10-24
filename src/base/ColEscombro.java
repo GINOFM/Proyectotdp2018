@@ -37,4 +37,10 @@ public class ColEscombro extends Colisionador {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
+	public void chocaPowerUp(Entity e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

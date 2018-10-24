@@ -6,6 +6,7 @@ import entidades.Barricada;
 import entidades.Enemy;
 import entidades.Entity;
 import entidades.Escombro;
+import entidades.Player;
 import objetos.PowerUpArma;
 
 public class Nivel1State extends NivelState {
@@ -28,11 +29,13 @@ public class Nivel1State extends NivelState {
 		Enemy enemigo4 = fabrica.getEnemigo();
 		fabrica.construirEnemigo(450, 50, this);
 		Enemy enemigo5 = fabrica.getEnemigo();
+
 		addEntity(enemigo);
 		addEntity(enemigo2);
 		addEntity(enemigo3);
 		addEntity(enemigo4);
 		addEntity(enemigo5);
+
 
 		//
 		Entity barrera1 = new Barricada(100, 320);
@@ -40,26 +43,27 @@ public class Nivel1State extends NivelState {
 		Entity escombro1 = new Escombro(250, 300);
 		Entity escombro2 = new Escombro(400, 320);
 		Entity escombro3 = new Escombro(310, 270);
-		Entity escombro4 = new Escombro(200, 290);
 		addEntity(barrera1);
 		addEntity(barrera2);
 		addEntity(escombro1);
 		addEntity(escombro2);
 		addEntity(escombro3);
-		addEntity(escombro4);
-		
-		Entity powerUp = new PowerUpArma(100, 100);
+
+
+		Entity powerUp = new PowerUpArma(100, 300);
 		addEntity(powerUp);
+		Entity powerUp2 = new PowerUpArma(100, 100);
+		addEntity(powerUp2);
 		
 		cantidadEnemigos = 5;
-
 	}
 
 	public void pasarAlSiguienteNivel() {
-		gameStateManager.switchState(new Nivel2State(gameStateManager));
+		gameStateManager.switchState(new Nivel2State(gameStateManager, player, puntaje, fabrica, fondo));
 	}
 
-
-
+	public Player getPlayer() {
+		return player;
+	}
 
 }

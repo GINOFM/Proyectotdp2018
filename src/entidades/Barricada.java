@@ -15,6 +15,7 @@ public class Barricada extends Obstaculo {
 	protected void initCraft() {
 		salud = 50;
 		loadImage("resources/barrera.png");
+		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColBarricada(this);
 	}
@@ -24,7 +25,7 @@ public class Barricada extends Obstaculo {
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(getImage(), (int) x, (int) y, null);
+		g.drawImage(getImageActual(), (int) x, (int) y, null);
 	}
 
 	public void serChocado(Colisionador col) {
@@ -50,6 +51,12 @@ public class Barricada extends Obstaculo {
 	public int obtenerPuntaje() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void afectarPorPowerUp() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

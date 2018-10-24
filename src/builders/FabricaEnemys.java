@@ -11,8 +11,8 @@ public class FabricaEnemys {
 		enemigoBuilder = eb;
 	}
 
-	public void construirEnemigo(int x, int y, NivelState nivel) {
-		enemigoBuilder.crearEnemigo(x, y, nivel);
+	public void construirEnemigo(int x, int y, NivelState nivelActual) {
+		enemigoBuilder.crearEnemigo(x, y, nivelActual);
 		enemigoBuilder.buildInteligencia();
 	}
 

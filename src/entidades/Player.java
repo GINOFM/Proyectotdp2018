@@ -7,7 +7,7 @@ import gamestates.NivelState;
 import objetos.DisparoJSimple;
 
 public class Player extends Entity{
-
+	
 	private int velocidadX;
 	private Escudo miEscudo;
 	private int nivelDisparo;
@@ -15,27 +15,39 @@ public class Player extends Entity{
 	private boolean activo;
 	private Colisionador col;
 	private boolean isShooting=false;
-	private NivelState nivel;
+	private int nivelNave;
 	
-	public Player(int x, int y, NivelState nivelState) {
+	private boolean moverIzquierda, moverDerecha;
+	private NivelState nivelActual;
+	
+	public Player(int x, int y, NivelState nivelActual) {
 		super(x, y);
-		nivel = nivelState;
+		this.nivelActual = nivelActual;
 		initCraft();
 	}
 
 	protected void initCraft() {
-
-		loadImage("resources/player_spaceship.png");
+		nivelNave = 0;
+		loadImage("resources/player_spaceship_01.png");
+		setImageActual(images.get(0));
+		loadImage("resources/player_spaceship_02.png");
+		loadImage("resources/player_spaceship_03.png");
 		getImageDimensions();
 		nivelDisparo = 1;
 		salud = 20;
 		activo = true;
 		col = new ColJugador(this);
-		velocidadX = 0;
+		velocidadX = 5;
+		moverIzquierda = false;
+		moverDerecha = false;
 	}
 
 	public void update() {
-		x += velocidadX;
+		
+		if(moverIzquierda)
+			x -= velocidadX;
+		else if (moverDerecha)
+			x += velocidadX;
 
 		if (x <= 0)
 			x = 0;
@@ -44,7 +56,7 @@ public class Player extends Entity{
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(getImage(), (int) x, (int) y, null);
+		g.drawImage(getImageActual(), (int) x, (int) y, null);
 	}
 
 	public void setVelX(int velX) {
@@ -56,10 +68,10 @@ public class Player extends Entity{
 	}
 	
 	public void disparar() {
-		nivel.addEntity(new DisparoJSimple(x + 12, y - 12));
+		nivelActual.addEntity(new DisparoJSimple(x + 12, y - 12));
 		if(nivelDisparo > 1) {
-			nivel.addEntity(new DisparoJSimple(x, y - 4));
-			nivel.addEntity(new DisparoJSimple(x + 32, y - 4));
+			nivelActual.addEntity(new DisparoJSimple(x, y - 4));
+			nivelActual.addEntity(new DisparoJSimple(x + 32, y - 4));
 		}
 	}
 	
@@ -97,7 +109,6 @@ public class Player extends Entity{
 		}
 	}
 
-
 	public boolean getIsShooting() {
 		return isShooting;
 	}
@@ -109,5 +120,28 @@ public class Player extends Entity{
 	@Override
 	public int obtenerPuntaje() {
 		return 0;
+	}
+
+
+	public void setRight(boolean right) {
+		this.moverDerecha = right;
+	}
+
+	public void setLeft(boolean left) {
+		this.moverIzquierda = left;
+	}
+	
+	public void mejorarNave() {
+		nivelNave++;
+		System.out.println("Nivel de nave: " + nivelNave);
+		imagenActual = images.get(nivelNave);
+	}
+
+	public void afectarPorPowerUp() {
+		mejorarNave();
+	}
+	
+	public void setNivelActual(NivelState nivelActual) {
+		this.nivelActual = nivelActual;
 	}
 }

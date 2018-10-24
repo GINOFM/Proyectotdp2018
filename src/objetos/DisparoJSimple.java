@@ -17,6 +17,7 @@ public class DisparoJSimple extends DisparoJugador {
 		velocidadY = 5;
 		daño = 10;
 		loadImage("resources/missile.png");
+		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColDisparoJugador(this);
 	}
@@ -28,7 +29,7 @@ public class DisparoJSimple extends DisparoJugador {
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(getImage(), (int) x, (int) y, null);
+		g.drawImage(getImageActual(), (int) x, (int) y, null);
 	}
 
 	@Override
@@ -54,5 +55,11 @@ public class DisparoJSimple extends DisparoJugador {
 	public int obtenerPuntaje() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void afectarPorPowerUp() {
+		// TODO Auto-generated method stub
+		
 	}
 }

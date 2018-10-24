@@ -4,9 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
-
 import entidades.Player;
 
 public class MenuState extends GameState {

@@ -14,6 +14,7 @@ public class Escombro extends Obstaculo {
 	protected void initCraft() {
 		salud = 100;
 		loadImage("resources/asteroide.png");
+		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColEscombro(this);
 	}
@@ -23,7 +24,7 @@ public class Escombro extends Obstaculo {
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(getImage(), (int) x, (int) y, null);
+		g.drawImage(getImageActual(), (int) x, (int) y, null);
 	}
 
 	public void serChocado(Colisionador col) {
@@ -50,6 +51,12 @@ public class Escombro extends Obstaculo {
 	public int obtenerPuntaje() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void afectarPorPowerUp() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,20 +1,29 @@
 package gamestates;
 
+import base.Fondo;
 import builders.AleatorioBuilder;
+import builders.FabricaEnemys;
 import builders.KamikazeBuilder;
 import entidades.Barricada;
 import entidades.Enemy;
 import entidades.Entity;
 import entidades.Escombro;
+import entidades.Player;
 
 public class Nivel2State extends NivelState {
 
 	public Nivel2State(GameStateManager gsm) {
 		super(gsm);
 	}
+	
+	public Nivel2State(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo) {
+		super(gsm, player, puntaje, fabrica, fondo);
+	}
 
 	@Override
 	public void init() {
+		limpiarListaEntidades();
+		addEntity(player);
 		fabrica.setEnemyBuilder(new KamikazeBuilder());
 		fabrica.construirEnemigo(200, 100, this);
 		Enemy enemigo = fabrica.getEnemigo();
@@ -36,17 +45,20 @@ public class Nivel2State extends NivelState {
 		addEntity(escombro1);
 		addEntity(escombro2);
 		
-		cantidadEnemigos = 3;
+		
 
+		cantidadEnemigos = 3;
 	}
 
 	@Override
 	public void pasarAlSiguienteNivel() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-
-
+	@Override
+	public Player getPlayer() {
+		return player;
+	}
 
 }

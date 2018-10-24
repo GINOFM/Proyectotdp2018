@@ -19,7 +19,33 @@ public abstract class PowerUp extends Entity {
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(getImage(), (int) x, (int) y, null);
+		g.drawImage(getImageActual(), (int) x, (int) y, null);
+	}
+	
+	public void serChocado(Colisionador col) {
+		col.chocaPowerUp(this);
+	}
+
+	public void chocar(Entity e) {
+		e.serChocado(col);
+	}
+
+	public void quitaVida(int dmg) {
+		destruir();
+	}
+
+	public void golpear(Entity e) {
+		e.afectarPorPowerUp();
+	}
+
+	public int obtenerPuntaje() {
+		return 8;
+	}
+
+	@Override
+	public void afectarPorPowerUp() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

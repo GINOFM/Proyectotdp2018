@@ -7,7 +7,7 @@ public class KamikazeBuilder extends Enemybuilder {
 
 	public void buildInteligencia() {
 
-		Inteligencia inteligenciaO = new InteligenciaDirigida(nivel.getPlayer());
+		Inteligencia inteligenciaO = new InteligenciaDirigida(nivelActual.getPlayer());
 		enemigo.setIntgc(inteligenciaO);
 	}
 

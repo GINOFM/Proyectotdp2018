@@ -29,8 +29,7 @@ public class ColPowerUp extends Colisionador{
 
 	@Override
 	public void chocaJugador(Entity e) {
-		// TODO Auto-generated method stub
-		
+		entidad.golpear(e);
 	}
 
 	@Override
@@ -41,6 +40,12 @@ public class ColPowerUp extends Colisionador{
 
 	@Override
 	public void chocaBarricada(Entity e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void chocaPowerUp(Entity e) {
 		// TODO Auto-generated method stub
 		
 	}

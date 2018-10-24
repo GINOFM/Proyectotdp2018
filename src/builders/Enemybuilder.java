@@ -6,18 +6,17 @@ import gamestates.NivelState;
 public abstract class Enemybuilder {
 	
 	protected Enemy enemigo;
-	protected NivelState nivel;
+	protected NivelState nivelActual;
 	
 	public Enemy getEnemigo()
 	{
 		return enemigo;
 	}
 	
-	public void crearEnemigo(int x,int y, NivelState nivel)
+	public void crearEnemigo(int x,int y, NivelState nivelActual)
 	{
-		this.nivel = nivel;
-		
-		enemigo = new Enemy(x,y, nivel);
+		this.nivelActual = nivelActual;
+		enemigo = new Enemy(x,y, nivelActual);
 	}
 	
 	public abstract void buildInteligencia();

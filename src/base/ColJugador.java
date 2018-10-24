@@ -43,4 +43,8 @@ public class ColJugador extends Colisionador{
 		
 	}
 
+	public void chocaPowerUp(Entity e) {
+		entidad.golpear(e);
+	}
+
 }

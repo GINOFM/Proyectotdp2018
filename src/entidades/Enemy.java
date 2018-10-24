@@ -1,7 +1,6 @@
 package entidades;
 
 import java.awt.Graphics;
-
 import base.ColDisparoJugador;
 import base.ColEnemigo;
 import base.Colisionador;
@@ -15,22 +14,23 @@ public class Enemy extends Entity {
 	private int direccion;
 	private int salud;
 	private long lastTime;
-	private NivelState nivel;
+	private NivelState nivelActual;
 	protected Colisionador col;
 
 	private Inteligencia intgc;
 
-	public Enemy(int x, int y, NivelState nivel) {
+	public Enemy(int x, int y, NivelState nivelActual) {
 		super(x, y);
 		direccion = -1;
 		salud = 30;
+		this.nivelActual = nivelActual;
 		initCraft();
-		this.nivel = nivel;
 	}
 
 	protected void initCraft() {
 
 		loadImage("resources/alien.png");
+		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColEnemigo(this);
 	}
@@ -52,7 +52,7 @@ public class Enemy extends Entity {
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(getImage(), (int) x, (int) y, null);
+		g.drawImage(getImageActual(), (int) x, (int) y, null);
 	}
 
 	public void cambiarDireccion() {
@@ -60,7 +60,7 @@ public class Enemy extends Entity {
 	}
 
 	public void disparar() {
-		nivel.addEntity(new DisparoEnemigoSimple(x, y + 15));
+		nivelActual.addEntity(new DisparoEnemigoSimple(x, y + 15));
 	}
 
 	public void chocar(Entity e) {
@@ -76,7 +76,7 @@ public class Enemy extends Entity {
 	public void quitaVida(int dmg) {
 		salud = salud - dmg;
 		if (salud <= 0) {
-			nivel.descontarUnEnemigo();
+			nivelActual.descontarUnEnemigo();
 			destruir();
 		}
 	}
@@ -95,6 +95,9 @@ public class Enemy extends Entity {
 		return 10;
 	}
 
-	
+	@Override
+	public void afectarPorPowerUp() {
+		// TODO Auto-generated method stub
 
+	}
 }

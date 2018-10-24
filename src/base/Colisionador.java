@@ -1,6 +1,7 @@
 package base;
 
 import entidades.Entity;
+import objetos.PowerUp;
 
 public abstract class Colisionador {
 	
@@ -17,5 +18,7 @@ public abstract class Colisionador {
 	public abstract void chocaEscombro(Entity e);
 	
 	public abstract void chocaBarricada(Entity e);
-	
+
+	public abstract void chocaPowerUp(Entity e);
+		
 }

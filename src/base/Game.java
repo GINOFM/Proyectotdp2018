@@ -1,4 +1,5 @@
 package base;
+
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -21,6 +22,7 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+
 	private GameStateManager gameStateManager;
 
 	public void init() {
@@ -115,18 +117,18 @@ public class Game extends Canvas implements Runnable {
 		frame.add(game);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		
+
 		frame.setVisible(true);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
-		
+
 		game.start();
 	}
-	
+
 	public void keyPressed(KeyEvent e) {
 		gameStateManager.getGameState().keyPressed(e);
 	}
-	
+
 	public void keyReleased(KeyEvent e) {
 		gameStateManager.getGameState().keyReleased(e);
 	}
@@ -134,6 +136,5 @@ public class Game extends Canvas implements Runnable {
 	public void mouseClicked(MouseEvent e) {
 		gameStateManager.getGameState().mouseClicked(e);
 	}
-
 
 }

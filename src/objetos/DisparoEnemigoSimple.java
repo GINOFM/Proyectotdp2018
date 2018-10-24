@@ -17,6 +17,7 @@ public class DisparoEnemigoSimple extends DisparoEnemigo {
 		velocidadY = 5;
 		daño = 5;
 		loadImage("resources/disparo_alien.png");
+		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColDisparoEnemigo(this);
 	}
@@ -28,7 +29,7 @@ public class DisparoEnemigoSimple extends DisparoEnemigo {
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(getImage(), (int) x, (int) y, null);
+		g.drawImage(getImageActual(), (int) x, (int) y, null);
 	}
 
 	public void serChocado(Colisionador col) {
@@ -51,6 +52,12 @@ public class DisparoEnemigoSimple extends DisparoEnemigo {
 	public int obtenerPuntaje() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void afectarPorPowerUp() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
