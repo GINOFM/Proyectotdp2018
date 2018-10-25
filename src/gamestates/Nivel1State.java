@@ -3,6 +3,7 @@ package gamestates;
 import builders.AleatorioBuilder;
 import builders.DisparayPierdeBuilder;
 import builders.KamikazeBuilder;
+import builders.KamikazeTipoDosBuilder;
 import entidades.Barricada;
 import entidades.Enemy;
 import entidades.Entity;
@@ -28,6 +29,7 @@ public class Nivel1State extends NivelState {
 		Enemy enemigo2 = fabrica.getEnemigo();
 		fabrica.construirEnemigo(600, 10, this);
 		Enemy enemigo3 = fabrica.getEnemigo();
+		fabrica.setEnemyBuilder(new KamikazeTipoDosBuilder());
 		fabrica.construirEnemigo(100, 30, this);
 		Enemy enemigo4 = fabrica.getEnemigo();
 		fabrica.setEnemyBuilder(new DisparayPierdeBuilder());
