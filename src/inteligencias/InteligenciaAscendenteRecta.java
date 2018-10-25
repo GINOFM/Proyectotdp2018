@@ -8,4 +8,10 @@ public class InteligenciaAscendenteRecta implements Inteligencia{
 		entidad.setY(entidad.getY() - entidad.getVelocidadY());
 	}
 
+	@Override
+	public boolean dispara() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

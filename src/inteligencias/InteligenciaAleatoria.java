@@ -8,6 +8,7 @@ public class InteligenciaAleatoria implements Inteligencia {
 
 	private int puntox;
 	private int puntoy;
+	private boolean cambioSprite=false;
 	
 	public InteligenciaAleatoria()
 	{
@@ -16,6 +17,12 @@ public class InteligenciaAleatoria implements Inteligencia {
 	}
 	
 	public void mover(Entity entidad) {
+		
+		if(cambioSprite==false)
+		{
+			entidad.setImageActual(entidad.getImageAt(2));
+			cambioSprite=true;
+		}
 
 		if(puntox>entidad.getX())
 		{
@@ -39,6 +46,7 @@ public class InteligenciaAleatoria implements Inteligencia {
 			setPuntox();
 			setPuntoy();
 		}
+		
 	}
 
 	public int getPuntox() {
@@ -55,9 +63,16 @@ public class InteligenciaAleatoria implements Inteligencia {
 	}
 
 	public void setPuntoy() {
-		int randomNum = ThreadLocalRandom.current().nextInt(1, 250 + 1);
+		int randomNum = ThreadLocalRandom.current().nextInt(1, 480 + 1);
 		puntoy=randomNum;
 	}
+
+	@Override
+	public boolean dispara() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 
 }

@@ -25,17 +25,23 @@ public class Enemy extends Entity {
 	protected boolean congelado;
 	protected int tiempoCongelado;
 
+	private Inteligencia inteligenciados;
+	private int porcentaje=0;
+	
 	public Enemy(int x, int y, NivelState nivelActual) {
 		super(x, y);
 		direccion = -1;
-		salud = 30;
+		salud = 50;
 		this.nivelActual = nivelActual;
 		initCraft();
 	}
 
 	protected void initCraft() {
 		loadImage("resources/alien.png");
-		setImageActual(images.get(0));
+		loadImage("resources/alien_02.png");
+		loadImage("resources/alien_03.png");
+		loadImage("resources/alien_04.png");
+		usarImagen(0);
 		getImageDimensions();
 		col = new ColEnemigo(this);
 		congelado = false;
@@ -43,18 +49,18 @@ public class Enemy extends Entity {
 	}
 
 	public void update() {
-
+		chequear();
 		if (!congelado) {
 			if (outOfBounds()) {
 				y = 0;
-				intgc = new InteligenciaAleatoria();
 			}
 			intgc.mover(this);
 
 			long now = System.currentTimeMillis();
 			if ((now - lastTime) / 60 > 22) {
 				lastTime = now;
-				disparar();
+				if(intgc.dispara())
+					disparar();
 			}
 		} else {
 			tiempoCongelado--;
@@ -65,6 +71,24 @@ public class Enemy extends Entity {
 
 	}
 
+	public void usarImagen(int num)
+	{
+		
+		setImageActual(images.get(num));
+	}
+	
+	private void chequear()
+	{
+		if(porcentaje!=0 && porcentaje!=-1)
+		{
+			if(salud<=porcentaje)
+			{
+				setIntgc(getInteligenciados());
+				porcentaje=-1;
+			}
+		}
+	}
+	
 	public void render(Graphics g) {
 		g.drawImage(getImageActual(), (int) x, (int) y, null);
 	}
@@ -121,5 +145,20 @@ public class Enemy extends Entity {
 
 	public void congelar() {
 		congelado = true;
+	}
+
+	public void setInteligenciados(Inteligencia inteligencia1) {
+		inteligenciados=inteligencia1;
+		
+	}
+
+	public void setPorcentaje(int i) {
+		porcentaje=i;
+		
+	}
+	
+	public Inteligencia getInteligenciados()
+	{
+		return inteligenciados;
 	}
 }
