@@ -8,16 +8,22 @@ import gamestates.NivelState;
 import inteligencias.Inteligencia;
 import inteligencias.InteligenciaAleatoria;
 import objetos.DisparoEnemigoSimple;
+import objetos.PowerUp;
 
 public class Enemy extends Entity {
 
 	private int direccion;
 	private int salud;
 	private long lastTime;
+	private long lastTimeCongelar;
 	private NivelState nivelActual;
 	protected Colisionador col;
 
 	private Inteligencia intgc;
+	private Inteligencia intgcGuardada;
+
+	protected boolean congelado;
+	protected int tiempoCongelado;
 
 	public Enemy(int x, int y, NivelState nivelActual) {
 		super(x, y);
@@ -28,25 +34,33 @@ public class Enemy extends Entity {
 	}
 
 	protected void initCraft() {
-
 		loadImage("resources/alien.png");
 		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColEnemigo(this);
+		congelado = false;
+		tiempoCongelado = 200;
 	}
 
 	public void update() {
 
-		if (outOfBounds()) {
-			y = 0;
-			intgc = new InteligenciaAleatoria();
-		}
-		intgc.mover(this);
+		if (!congelado) {
+			if (outOfBounds()) {
+				y = 0;
+				intgc = new InteligenciaAleatoria();
+			}
+			intgc.mover(this);
 
-		long now = System.currentTimeMillis();
-		if ((now - lastTime) / 60 > 22) {
-			lastTime = now;
-			disparar();
+			long now = System.currentTimeMillis();
+			if ((now - lastTime) / 60 > 22) {
+				lastTime = now;
+				disparar();
+			}
+		} else {
+			tiempoCongelado--;
+			if(tiempoCongelado <= 0) {
+				congelado = false;
+			}
 		}
 
 	}
@@ -99,5 +113,13 @@ public class Enemy extends Entity {
 	public void afectarPorPowerUp() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void aceptarPowerUp(PowerUp powerup) {
+		powerup.visitEnemigo(this);
+	}
+
+	public void congelar() {
+		congelado = true;
 	}
 }

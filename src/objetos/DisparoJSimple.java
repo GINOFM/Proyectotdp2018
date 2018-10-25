@@ -26,6 +26,13 @@ public class DisparoJSimple extends DisparoJugador {
 	}
 
 	public void update() {
+		if (multiplicar) {
+			tiempoMultiplicar--;
+			if (tiempoMultiplicar <= 0) {
+				multiplicar = false;
+				multiplicador = 1;
+			}
+		}
 		inteligencia.mover(this);
 		if (y <= 0)
 			destruir();
@@ -51,7 +58,7 @@ public class DisparoJSimple extends DisparoJugador {
 
 	@Override
 	public void golpear(Entity e) {
-		e.quitaVida(10);
+		e.quitaVida(daño * multiplicador);
 	}
 
 	@Override
@@ -63,7 +70,13 @@ public class DisparoJSimple extends DisparoJugador {
 	@Override
 	public void afectarPorPowerUp() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
+	@Override
+	public void aceptarPowerUp(PowerUp powerup) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

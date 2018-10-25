@@ -18,7 +18,7 @@ public abstract class NivelState extends GameState {
 
 	private Entity entidad;
 	private Entity entidadAux;
-	
+
 	protected Player player;
 	protected int puntaje;
 	protected Fondo fondo;
@@ -26,7 +26,6 @@ public abstract class NivelState extends GameState {
 	FabricaEnemys fabrica;
 
 	public NivelState(GameStateManager gsm) {
-
 		gameStateManager = gsm;
 		fondo = new Fondo();
 		player = new Player(200, 410, this);
@@ -35,7 +34,7 @@ public abstract class NivelState extends GameState {
 		gameStateManager = gsm;
 		addEntity(player);
 	}
-	
+
 	public NivelState(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo) {
 		this.player = player;
 		player.setNivelActual(this);
@@ -85,7 +84,7 @@ public abstract class NivelState extends GameState {
 		Font fnt0 = new Font("arial", Font.BOLD, 20);
 		g.setFont(fnt0);
 		g.setColor(Color.white);
-		
+
 		fondo.render(g);
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
@@ -103,6 +102,8 @@ public abstract class NivelState extends GameState {
 		} else if (key == KeyEvent.VK_SPACE && !player.getIsShooting()) {
 			player.setIsShooting(true);
 			player.disparar();
+		} else if (key == KeyEvent.VK_E) {
+			System.out.println("Salud del jugador: " + player.getSalud());
 		}
 
 	}
@@ -130,7 +131,7 @@ public abstract class NivelState extends GameState {
 	public void addEntity(Entity entity) {
 		entidades.add(entity);
 	}
-	
+
 	public Player getPlayer() {
 		return player;
 	}
@@ -138,16 +139,20 @@ public abstract class NivelState extends GameState {
 	public FabricaEnemys getFabrica() {
 		return fabrica;
 	}
-	
+
 	public void sumarPuntaje(int puntos) {
 		puntaje = puntaje + puntos;
 	}
-	
+
 	public void descontarUnEnemigo() {
 		cantidadEnemigos--;
 	}
-	
+
 	public void limpiarListaEntidades() {
 		entidades.clear();
+	}
+
+	public LinkedList<Entity> getEntities() {
+		return entidades;
 	}
 }

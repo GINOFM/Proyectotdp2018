@@ -26,8 +26,6 @@ public class ColEnemigo extends Colisionador{
 
 	@Override
 	public void chocaJugador(Entity e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

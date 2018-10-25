@@ -8,6 +8,8 @@ import entidades.Entity;
 import entidades.Escombro;
 import entidades.Player;
 import objetos.PowerUpArma;
+import objetos.PowerUpCongelar;
+import objetos.PowerUpPocion;
 
 public class Nivel1State extends NivelState {
 
@@ -54,6 +56,10 @@ public class Nivel1State extends NivelState {
 		addEntity(powerUp);
 		Entity powerUp2 = new PowerUpArma(100, 100);
 		addEntity(powerUp2);
+		Entity powerUp3 = new PowerUpPocion(300, 20);
+		addEntity(powerUp3);
+		Entity powerUp4 = new PowerUpCongelar(200, 20);
+		addEntity(powerUp4);
 		
 		cantidadEnemigos = 5;
 	}

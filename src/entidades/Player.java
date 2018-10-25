@@ -7,21 +7,24 @@ import gamestates.NivelState;
 import objetos.ArmaJugador;
 import objetos.ArmaJugadorDisparoSimple;
 import objetos.DisparoJSimple;
+import objetos.Escudo;
+import objetos.PowerUp;
 
-public class Player extends Entity{
-	
+public class Player extends Entity {
+
 	private int velocidadX;
 	private Escudo miEscudo;
 	private int salud;
+	private int salud_maxima;
 	private boolean activo;
 	private Colisionador col;
-	private boolean isShooting=false;
+	private boolean isShooting = false;
 	private int nivelNave;
 	private ArmaJugador miArma;
-	
+
 	private boolean moverIzquierda, moverDerecha;
 	private NivelState nivelActual;
-	
+
 	public Player(int x, int y, NivelState nivelActual) {
 		super(x, y);
 		this.nivelActual = nivelActual;
@@ -30,12 +33,13 @@ public class Player extends Entity{
 
 	protected void initCraft() {
 		nivelNave = 0;
+		salud_maxima = 100;
+		salud = 100;
 		loadImage("resources/player_spaceship_01.png");
 		setImageActual(images.get(0));
 		loadImage("resources/player_spaceship_02.png");
 		loadImage("resources/player_spaceship_03.png");
 		getImageDimensions();
-		salud = 20;
 		activo = true;
 		col = new ColJugador(this);
 		velocidadX = 5;
@@ -45,8 +49,8 @@ public class Player extends Entity{
 	}
 
 	public void update() {
-		
-		if(moverIzquierda)
+
+		if (moverIzquierda)
 			x -= velocidadX;
 		else if (moverDerecha)
 			x += velocidadX;
@@ -68,22 +72,22 @@ public class Player extends Entity{
 	public void setMiEscudo(Escudo miEscudo) {
 		this.miEscudo = miEscudo;
 	}
-	
+
 	public void disparar() {
 		miArma.disparar(nivelActual);
 	}
-	
+
 	public void dañar(int daño) {
 		salud = salud - daño;
-		if(salud <= 0) {
+		if (salud <= 0) {
 			destruir();
 		}
 	}
-	
+
 	public void destruir() {
 		activo = false;
 	}
-	
+
 	public boolean getActivo() {
 		return activo;
 	}
@@ -120,7 +124,6 @@ public class Player extends Entity{
 		return 0;
 	}
 
-
 	public void setRight(boolean right) {
 		this.moverDerecha = right;
 	}
@@ -128,7 +131,7 @@ public class Player extends Entity{
 	public void setLeft(boolean left) {
 		this.moverIzquierda = left;
 	}
-	
+
 	public void mejorarNave() {
 		nivelNave++;
 		imagenActual = images.get(nivelNave);
@@ -138,12 +141,36 @@ public class Player extends Entity{
 	public void afectarPorPowerUp() {
 		mejorarNave();
 	}
-	
+
 	public void setNivelActual(NivelState nivelActual) {
 		this.nivelActual = nivelActual;
 	}
-	
+
 	public void setArmaJugador(ArmaJugador nuevaArma) {
 		miArma = nuevaArma;
+	}
+
+	public void aceptarPowerUp(PowerUp powerup) {
+		powerup.visitJugador(this);
+	}
+
+	public int getSalud() {
+		return salud;
+	}
+
+	public void setSalud(int salud) {
+		if (salud > salud_maxima) {
+			this.salud = salud_maxima;
+		} else {
+			this.salud = salud;
+		}
+	}
+	
+	public NivelState getNivel() {
+		return nivelActual;
+	}
+	
+	public ArmaJugador getArma() {
+		return miArma;
 	}
 }

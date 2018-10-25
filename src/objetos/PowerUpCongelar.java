@@ -1,14 +1,17 @@
 package objetos;
 
+import java.util.LinkedList;
+
 import base.ColPowerUp;
-import base.Colisionador;
 import entidades.Enemy;
 import entidades.Entity;
 import entidades.Player;
 
-public class PowerUpArma extends PowerUp{
+public class PowerUpCongelar extends PowerUp {
 
-	public PowerUpArma(int x, int y) {
+	protected boolean activo;
+
+	public PowerUpCongelar(int x, int y) {
 		super(x, y);
 		initCraft();
 	}
@@ -16,26 +19,31 @@ public class PowerUpArma extends PowerUp{
 	protected void initCraft() {
 		velocidadY = 1;
 		velocidadX = 3;
-		loadImage("resources/powerup_arma.png");
+		loadImage("resources/powerup_freeze.png");
 		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColPowerUp(this);
+		activo = false;
 	}
 
 	public void visitJugador(Player jugador) {
-		jugador.mejorarNave();
+		if (!activo) {
+			activo = true;
+			LinkedList<Entity> entidades = jugador.getNivel().getEntities();
+			for (Entity e : entidades) {
+				e.aceptarPowerUp(this);
+			}
+		}
 	}
 
-	@Override
 	public void visitEnemigo(Enemy enemigo) {
-		// TODO Auto-generated method stub
-		
+		enemigo.congelar();
 	}
 
 	@Override
 	public void aceptarPowerUp(PowerUp powerup) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

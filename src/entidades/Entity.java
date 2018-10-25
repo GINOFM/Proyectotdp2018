@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 
 import base.Colisionador;
 import inteligencias.Inteligencia;
+import objetos.PowerUp;
 
 public abstract class Entity {
 	protected int x;
@@ -20,7 +21,7 @@ public abstract class Entity {
 	protected Image imagenActual;
 	protected LinkedList<Image> images;
 	protected Inteligencia inteligencia;
-	
+
 	protected int velocidadY;
 
 	public Entity(int x, int y) {
@@ -59,7 +60,7 @@ public abstract class Entity {
 	public Image getImageActual() {
 		return imagenActual;
 	}
-	
+
 	public Image getImageAt(int indiceImagen) {
 		return images.get(indiceImagen);
 	}
@@ -67,7 +68,7 @@ public abstract class Entity {
 	public void setImageActual(Image imagenActual) {
 		this.imagenActual = imagenActual;
 	}
-	
+
 	public int getX() {
 		return x;
 	}
@@ -104,9 +105,9 @@ public abstract class Entity {
 		else
 			return false;
 	}
-	
+
 	public abstract void afectarPorPowerUp();
-	
+
 	public int getVelocidadY() {
 		return velocidadY;
 	}
@@ -114,8 +115,10 @@ public abstract class Entity {
 	public void setVelocidadY(int valor) {
 		velocidadY = valor;
 	}
-	
+
 	public void setInteligencia(Inteligencia inteligencia) {
 		this.inteligencia = inteligencia;
 	}
+
+	public abstract void aceptarPowerUp(PowerUp powerup);
 }

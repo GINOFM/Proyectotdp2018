@@ -2,9 +2,10 @@ package objetos;
 
 import java.awt.Graphics;
 import base.Colisionador;
+import base.Visitor;
 import entidades.Entity;
 
-public abstract class PowerUp extends Entity {
+public abstract class PowerUp extends Entity implements Visitor{
 
 	protected int velocidadX;
 	protected int velocidadY;
@@ -35,7 +36,7 @@ public abstract class PowerUp extends Entity {
 	}
 
 	public void golpear(Entity e) {
-		e.afectarPorPowerUp();
+		e.aceptarPowerUp(this);
 	}
 
 	public int obtenerPuntaje() {

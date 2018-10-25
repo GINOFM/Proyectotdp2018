@@ -1,35 +1,33 @@
 package objetos;
 
 import base.ColPowerUp;
-import base.Colisionador;
 import entidades.Enemy;
-import entidades.Entity;
 import entidades.Player;
 
-public class PowerUpArma extends PowerUp{
+public class PowerUpMultiplicador extends PowerUp{
 
-	public PowerUpArma(int x, int y) {
+	public PowerUpMultiplicador(int x, int y) {
 		super(x, y);
 		initCraft();
 	}
 
-	protected void initCraft() {
-		velocidadY = 1;
-		velocidadX = 3;
-		loadImage("resources/powerup_arma.png");
-		setImageActual(images.get(0));
-		getImageDimensions();
-		col = new ColPowerUp(this);
-	}
-
 	public void visitJugador(Player jugador) {
-		jugador.mejorarNave();
+		
 	}
 
 	@Override
 	public void visitEnemigo(Enemy enemigo) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	protected void initCraft() {
+		velocidadY = 1;
+		velocidadX = 3;
+		loadImage("resources/powerup_multiplicador.png");
+		setImageActual(images.get(0));
+		getImageDimensions();
+		col = new ColPowerUp(this);
 	}
 
 	@Override
