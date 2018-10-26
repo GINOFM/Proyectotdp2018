@@ -17,6 +17,7 @@ public class Nivel1State extends NivelState {
 
 	public Nivel1State(GameStateManager gsm) {
 		super(gsm);
+		init();
 	}
 
 	@Override

@@ -14,10 +14,12 @@ public class Nivel2State extends NivelState {
 
 	public Nivel2State(GameStateManager gsm) {
 		super(gsm);
+		init();
 	}
 	
 	public Nivel2State(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo) {
 		super(gsm, player, puntaje, fabrica, fondo);
+		init();
 	}
 
 	@Override

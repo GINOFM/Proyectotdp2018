@@ -11,8 +11,8 @@ public class KamikazeTipoDosBuilder extends Enemybuilder {
 		Inteligencia inteligencia0 = new InteligenciaDirigida(nivelActual.getPlayer());
 		Inteligencia inteligencia1= new InteligenciaAleatoria();
 		enemigo.setIntgc(inteligencia0);
-		enemigo.setInteligenciados(inteligencia1);
-		enemigo.setPorcentaje(20);
+	//	enemigo.setInteligenciados(inteligencia1);
+	//	enemigo.setPorcentaje(20);
 	}
 
 }
