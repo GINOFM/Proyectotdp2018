@@ -26,5 +26,4 @@ public abstract class GameState {
 	public void setGameStateManager(GameStateManager gameStateManager) {
 		this.gameStateManager = gameStateManager;
 	}
-	
 }

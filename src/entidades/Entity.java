@@ -4,11 +4,11 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.LinkedList;
-
 import javax.swing.ImageIcon;
-
 import base.Colisionador;
-import inteligencias.Inteligencia;
+import gamestates.NivelState;
+import inteligencias.InteligenciaDisparo;
+import inteligencias.InteligenciaMovimiento;
 import objetos.PowerUp;
 
 public abstract class Entity {
@@ -17,12 +17,16 @@ public abstract class Entity {
 	protected int width;
 	protected int height;
 	protected boolean estaActivo;
+	protected int salud;
+	protected int salud_maxima;
 
 	protected Image imagenActual;
 	protected LinkedList<Image> images;
-	protected Inteligencia inteligencia;
-
+	protected InteligenciaMovimiento inteligenciaMovimiento;
+	protected InteligenciaDisparo inteligenciaDisparo;
+	
 	protected int velocidadY;
+	protected NivelState nivelActual;
 
 	public Entity(int x, int y) {
 		this.x = x;
@@ -44,6 +48,12 @@ public abstract class Entity {
 	public abstract void quitaVida(int dmg);
 
 	public abstract void golpear(Entity e);
+
+	public abstract void aceptarPowerUp(PowerUp powerup);
+	
+	public abstract int obtenerPuntaje();
+	
+	public abstract void afectarPorPowerUp();
 
 	protected void getImageDimensions() {
 
@@ -97,16 +107,12 @@ public abstract class Entity {
 		return new Rectangle(x, y, width, height);
 	}
 
-	public abstract int obtenerPuntaje();
-
 	public boolean outOfBounds() {
 		if (x < 0 || y < 0 || y > 480 || y > 640)
 			return true;
 		else
 			return false;
 	}
-
-	public abstract void afectarPorPowerUp();
 
 	public int getVelocidadY() {
 		return velocidadY;
@@ -116,9 +122,31 @@ public abstract class Entity {
 		velocidadY = valor;
 	}
 
-	public void setInteligencia(Inteligencia inteligencia) {
-		this.inteligencia = inteligencia;
+	public void setInteligenciaMovimiento(InteligenciaMovimiento inteligencia) {
+		this.inteligenciaMovimiento = inteligencia;
 	}
 
-	public abstract void aceptarPowerUp(PowerUp powerup);
+	public InteligenciaMovimiento getInteligencia() {
+		return inteligenciaMovimiento;
+	}
+
+	public int getSalud() {
+		return salud;
+	}
+
+	public int getSaludMaxima() {
+		return salud_maxima;
+	}
+
+	public NivelState getNivel() {
+		return nivelActual;
+	}
+
+	public InteligenciaDisparo getInteligenciaDisparo() {
+		return inteligenciaDisparo;
+	}
+
+	public void setInteligenciaDisparo(InteligenciaDisparo inteligenciaDisparo) {
+		this.inteligenciaDisparo = inteligenciaDisparo;
+	}
 }

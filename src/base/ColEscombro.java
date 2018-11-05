@@ -12,7 +12,6 @@ public class ColEscombro extends Colisionador {
 	@Override
 	public void chocaEnemigo(Entity e) {
 		// TODO Auto-generated method stub
-
 	}
 
 	public void chocaDisparoJugador(Entity e) {
@@ -25,7 +24,7 @@ public class ColEscombro extends Colisionador {
 
 	@Override
 	public void chocaJugador(Entity e) {
-		
+
 	}
 
 	public void chocaBarricada(Entity e) {
@@ -40,7 +39,5 @@ public class ColEscombro extends Colisionador {
 	@Override
 	public void chocaPowerUp(Entity e) {
 		// TODO Auto-generated method stub
-		
 	}
-
 }

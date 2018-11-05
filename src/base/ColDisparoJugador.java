@@ -1,11 +1,11 @@
 package base;
 
 import entidades.Entity;
-import objetos.DisparoJSimple;
+import objetos.DisparoJugador;
 
 public class ColDisparoJugador extends Colisionador {
 
-	public ColDisparoJugador(DisparoJSimple disparoJSimple) {
+	public ColDisparoJugador(DisparoJugador disparoJSimple) {
 		entidad = disparoJSimple;
 	}
 
@@ -36,7 +36,5 @@ public class ColDisparoJugador extends Colisionador {
 	@Override
 	public void chocaPowerUp(Entity e) {
 		// TODO Auto-generated method stub
-		
 	}
-
 }

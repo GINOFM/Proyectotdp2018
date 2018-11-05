@@ -2,7 +2,6 @@ package objetos;
 
 import base.Colisionador;
 import entidades.Entity;
-import inteligencias.Inteligencia;
 
 public abstract class DisparoJugador extends Entity {
 

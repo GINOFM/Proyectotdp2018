@@ -46,7 +46,5 @@ public abstract class PowerUp extends Entity implements Visitor{
 	@Override
 	public void afectarPorPowerUp() {
 		// TODO Auto-generated method stub
-		
 	}
-
 }

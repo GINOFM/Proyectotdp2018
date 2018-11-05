@@ -3,7 +3,6 @@ package base;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
@@ -136,5 +135,4 @@ public class Game extends Canvas implements Runnable {
 	public void mouseClicked(MouseEvent e) {
 		gameStateManager.getGameState().mouseClicked(e);
 	}
-
 }

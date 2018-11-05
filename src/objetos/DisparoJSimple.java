@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import base.ColDisparoJugador;
 import base.Colisionador;
 import entidades.Entity;
-import inteligencias.Inteligencia;
 import inteligencias.InteligenciaAscendenteRecta;
 
 public class DisparoJSimple extends DisparoJugador {
@@ -22,18 +21,11 @@ public class DisparoJSimple extends DisparoJugador {
 		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColDisparoJugador(this);
-		inteligencia = new InteligenciaAscendenteRecta();
+		inteligenciaMovimiento = new InteligenciaAscendenteRecta();
 	}
 
 	public void update() {
-		if (multiplicar) {
-			tiempoMultiplicar--;
-			if (tiempoMultiplicar <= 0) {
-				multiplicar = false;
-				multiplicador = 1;
-			}
-		}
-		inteligencia.mover(this);
+		inteligenciaMovimiento.mover(this);
 		if (y <= 0)
 			destruir();
 	}
@@ -58,7 +50,7 @@ public class DisparoJSimple extends DisparoJugador {
 
 	@Override
 	public void golpear(Entity e) {
-		e.quitaVida(daño * multiplicador);
+		e.quitaVida(daño);
 	}
 
 	@Override
@@ -70,13 +62,10 @@ public class DisparoJSimple extends DisparoJugador {
 	@Override
 	public void afectarPorPowerUp() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void aceptarPowerUp(PowerUp powerup) {
 		// TODO Auto-generated method stub
-
 	}
-
 }

@@ -3,14 +3,14 @@ package base;
 import entidades.Enemy;
 import entidades.Entity;
 
-public class ColEnemigo extends Colisionador{
+public class ColEnemigo extends Colisionador {
 
 	public ColEnemigo(Enemy enemigo) {
 		entidad = enemigo;
 	}
-	
+
 	public void chocaEnemigo(Entity e) {
-		
+
 	}
 
 	@Override
@@ -21,7 +21,6 @@ public class ColEnemigo extends Colisionador{
 	@Override
 	public void chocaDisparoEnemigo(Entity e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -31,19 +30,17 @@ public class ColEnemigo extends Colisionador{
 	@Override
 	public void chocaEscombro(Entity e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void chocaBarricada(Entity e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void chocaPowerUp(Entity e) {
 		// TODO Auto-generated method stub
-		
 	}
-
 }

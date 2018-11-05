@@ -4,9 +4,8 @@ import java.awt.Graphics;
 import base.ColJugador;
 import base.Colisionador;
 import gamestates.NivelState;
-import objetos.ArmaJugador;
-import objetos.ArmaJugadorDisparoSimple;
-import objetos.DisparoJSimple;
+import inteligencias.ArmaJugador;
+import inteligencias.ArmaJugadorDisparoSimple;
 import objetos.Escudo;
 import objetos.PowerUp;
 
@@ -14,8 +13,6 @@ public class Player extends Entity {
 
 	private int velocidadX;
 	private Escudo miEscudo;
-	private int salud;
-	private int salud_maxima;
 	private boolean activo;
 	private Colisionador col;
 	private boolean isShooting = false;
@@ -23,7 +20,7 @@ public class Player extends Entity {
 	private ArmaJugador miArma;
 
 	private boolean moverIzquierda, moverDerecha;
-	private NivelState nivelActual;
+	
 
 	public Player(int x, int y, NivelState nivelActual) {
 		super(x, y);
@@ -45,11 +42,10 @@ public class Player extends Entity {
 		velocidadX = 5;
 		moverIzquierda = false;
 		moverDerecha = false;
-		miArma = new ArmaJugadorDisparoSimple(x, y, this);
+		miArma = new ArmaJugadorDisparoSimple(this);
 	}
 
 	public void update() {
-
 		if (moverIzquierda)
 			x -= velocidadX;
 		else if (moverDerecha)
@@ -119,7 +115,6 @@ public class Player extends Entity {
 		isShooting = valor;
 	}
 
-	@Override
 	public int obtenerPuntaje() {
 		return 0;
 	}
@@ -154,20 +149,12 @@ public class Player extends Entity {
 		powerup.visitJugador(this);
 	}
 
-	public int getSalud() {
-		return salud;
-	}
-
 	public void setSalud(int salud) {
 		if (salud > salud_maxima) {
 			this.salud = salud_maxima;
 		} else {
 			this.salud = salud;
 		}
-	}
-	
-	public NivelState getNivel() {
-		return nivelActual;
 	}
 	
 	public ArmaJugador getArma() {

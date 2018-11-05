@@ -5,7 +5,6 @@ import objetos.DisparoEnemigoSimple;
 
 public class ColDisparoEnemigo extends Colisionador{
 
-	
 	public ColDisparoEnemigo(DisparoEnemigoSimple disparoESimple) {
 		entidad = disparoESimple;
 	}
@@ -40,7 +39,5 @@ public class ColDisparoEnemigo extends Colisionador{
 	@Override
 	public void chocaPowerUp(Entity e) {
 		// TODO Auto-generated method stub
-		
 	}
-
 }

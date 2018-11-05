@@ -4,15 +4,19 @@ import base.ColPowerUp;
 import entidades.Enemy;
 import entidades.Player;
 
-public class PowerUpMultiplicador extends PowerUp{
+public class PowerUpMultiplicador extends PowerUp implements Runnable{
 
+	Player jugador;
+	
 	public PowerUpMultiplicador(int x, int y) {
 		super(x, y);
 		initCraft();
 	}
 
 	public void visitJugador(Player jugador) {
-		
+		this.jugador = jugador;
+		Thread hilo = new Thread(this);
+		hilo.start();
 	}
 
 	@Override
@@ -34,6 +38,16 @@ public class PowerUpMultiplicador extends PowerUp{
 	public void aceptarPowerUp(PowerUp powerup) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void run() {
+		jugador.getArma().potenciar();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		jugador.getArma().despotenciar();
 	}
 
 }

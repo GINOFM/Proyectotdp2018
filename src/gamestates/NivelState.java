@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.LinkedList;
+
+import UI.BarraSalud;
 import base.Fondo;
 import builders.FabricaEnemys;
 import entidades.Entity;
@@ -23,12 +25,14 @@ public abstract class NivelState extends GameState {
 	protected int puntaje;
 	protected Fondo fondo;
 	protected int cantidadEnemigos;
-	FabricaEnemys fabrica;
+	protected FabricaEnemys fabrica;
+	protected BarraSalud bs;
 
 	public NivelState(GameStateManager gsm) {
 		gameStateManager = gsm;
 		fondo = new Fondo();
 		player = new Player(200, 410, this);
+		bs = new BarraSalud(player);
 		puntaje = 0;
 		fabrica = new FabricaEnemys();
 		gameStateManager = gsm;
@@ -41,10 +45,12 @@ public abstract class NivelState extends GameState {
 		this.puntaje = puntaje;
 		this.fabrica = fabrica;
 		this.fondo = fondo;
+		// agregar bs
 	}
 
 	public void update() {
 		fondo.update();
+		bs.update();
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
 			entidad.update();
@@ -84,13 +90,14 @@ public abstract class NivelState extends GameState {
 		Font fnt0 = new Font("arial", Font.BOLD, 20);
 		g.setFont(fnt0);
 		g.setColor(Color.white);
-
 		fondo.render(g);
+		bs.render(g);
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
 			entidad.render(g);
 		}
 		g.drawString("Puntaje: " + puntaje, 10, 460);
+		
 	}
 
 	public void keyPressed(KeyEvent e) {
@@ -102,10 +109,9 @@ public abstract class NivelState extends GameState {
 		} else if (key == KeyEvent.VK_SPACE && !player.getIsShooting()) {
 			player.setIsShooting(true);
 			player.disparar();
-		} else if (key == KeyEvent.VK_E) {
-			System.out.println("Salud del jugador: " + player.getSalud());
+		}else if (key == KeyEvent.VK_E) {
+			player.quitaVida(10);
 		}
-
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -123,7 +129,6 @@ public abstract class NivelState extends GameState {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
 	public abstract void pasarAlSiguienteNivel();

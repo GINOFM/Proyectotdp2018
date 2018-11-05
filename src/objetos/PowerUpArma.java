@@ -1,9 +1,7 @@
 package objetos;
 
 import base.ColPowerUp;
-import base.Colisionador;
 import entidades.Enemy;
-import entidades.Entity;
 import entidades.Player;
 
 public class PowerUpArma extends PowerUp{

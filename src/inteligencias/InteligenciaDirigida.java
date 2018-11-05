@@ -2,7 +2,7 @@ package inteligencias;
 
 import entidades.Entity;
 
-public class InteligenciaDirigida implements Inteligencia {
+public class InteligenciaDirigida implements InteligenciaMovimiento {
 
 	private Entity objetivo;
 
@@ -31,11 +31,6 @@ public class InteligenciaDirigida implements Inteligencia {
 			movimientohorizontal(entidad);
 			puedeDisparar = true;
 		}
-	}
-
-	@Override
-	public boolean dispara() {
-		return puedeDisparar;
 	}
 
 	private void movimientohorizontal(Entity entidad) {
@@ -69,7 +64,6 @@ public class InteligenciaDirigida implements Inteligencia {
 
 		if (entidad.outOfBounds()) {
 			lastTime = System.currentTimeMillis();
-			;
 			dirigir = false;
 		}
 	}

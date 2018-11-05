@@ -57,13 +57,10 @@ public class Barricada extends Obstaculo {
 	@Override
 	public void afectarPorPowerUp() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void aceptarPowerUp(PowerUp powerup) {
 		// TODO Auto-generated method stub
-		
 	}
-
 }

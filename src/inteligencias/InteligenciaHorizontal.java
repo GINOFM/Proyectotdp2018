@@ -2,13 +2,12 @@ package inteligencias;
 
 import entidades.Entity;
 
-public class InteligenciaHorizontal implements Inteligencia {
+public class InteligenciaHorizontal implements InteligenciaMovimiento {
 
 	private int puntoXmaximo = 310 * 2;
 	private int puntoXminimo = 0;
 	private boolean izquierda = true;
 
-	@Override
 	public void mover(Entity entidad) {
 
 		if (izquierda == true) {
@@ -20,12 +19,5 @@ public class InteligenciaHorizontal implements Inteligencia {
 			entidad.setX(entidad.getX() - 1);
 		} else
 			izquierda = true;
-
 	}
-
-	@Override
-	public boolean dispara() {
-		return true;
-	}
-
 }

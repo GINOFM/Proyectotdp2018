@@ -1,7 +1,8 @@
-package objetos;
+package inteligencias;
 
 import entidades.Player;
 import gamestates.NivelState;
+import objetos.DisparoJSimple;
 
 public class ArmaJugadorDisparoTriple extends ArmaJugador{
 
@@ -17,6 +18,17 @@ public class ArmaJugadorDisparoTriple extends ArmaJugador{
 
 	public void mejorarArma() {
 		jugador.setArmaJugador(new ArmaJugadorDisparoQuintuple(jugador));
+	}
+
+	@Override
+	public void potenciar() {
+		jugador.setArmaJugador(new ArmaJugDispTriplePotenciado(jugador));
+	}
+
+	@Override
+	public void despotenciar() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

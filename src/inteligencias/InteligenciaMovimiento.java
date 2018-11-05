@@ -2,9 +2,8 @@ package inteligencias;
 
 import entidades.Entity;
 
-public interface Inteligencia {
+public interface InteligenciaMovimiento {
 
 	public void mover(Entity entidad);
-	
-	public boolean dispara();
+
 }

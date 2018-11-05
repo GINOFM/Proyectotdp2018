@@ -1,7 +1,6 @@
 package base;
 
 import entidades.Entity;
-import objetos.PowerUp;
 
 public abstract class Colisionador {
 	

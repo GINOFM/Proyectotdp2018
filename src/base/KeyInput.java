@@ -3,9 +3,6 @@ package base;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import gamestates.GameState;
-import gamestates.NivelState;
-
 public class KeyInput extends KeyAdapter {
 
 	private Game juego;

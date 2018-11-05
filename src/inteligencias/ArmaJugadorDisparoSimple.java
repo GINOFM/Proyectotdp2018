@@ -1,11 +1,12 @@
-package objetos;
+package inteligencias;
 
 import entidades.Player;
 import gamestates.NivelState;
+import objetos.DisparoJSimple;
 
 public class ArmaJugadorDisparoSimple extends ArmaJugador {
 
-	public ArmaJugadorDisparoSimple(int posNaveX, int posNaveY, Player jugador) {
+	public ArmaJugadorDisparoSimple(Player jugador) {
 		super(jugador);
 	}
 
@@ -17,4 +18,14 @@ public class ArmaJugadorDisparoSimple extends ArmaJugador {
 		jugador.setArmaJugador(new ArmaJugadorDisparoTriple(jugador));
 	}
 
+	@Override
+	public void potenciar() {
+		jugador.setArmaJugador(new ArmaJugDispSimplePotenciado(jugador));
+		
+	}
+
+	@Override
+	public void despotenciar() {
+		// TODO Auto-generated method stub
+	}
 }

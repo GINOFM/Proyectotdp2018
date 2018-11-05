@@ -44,13 +44,11 @@ public class MenuState extends GameState {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
 	public void mouseClicked(MouseEvent e) {
@@ -60,8 +58,6 @@ public class MenuState extends GameState {
 			} else if (e.getX() > 240 && e.getX() < 402 && e.getY() > 310 && e.getY() < 364) {
 				System.exit(1);
 			}
-
 		}
 	}
-
 }
