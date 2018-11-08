@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import entidades.Entity;
 import entidades.Player;
 
-public class InteligenciaAleatoriaAKamiAleatoria implements InteligenciaMovimiento {
+public class InteligenciaAleatoriaAKamikazeAleatoria implements InteligenciaMovimiento {
 
 	private int puntox;
 	private int puntoy;
@@ -13,9 +13,7 @@ public class InteligenciaAleatoriaAKamiAleatoria implements InteligenciaMovimien
 	private int duracion;
 	private long tiempoActivado;
 
-//	private boolean cambioSprite = false;
-
-	public InteligenciaAleatoriaAKamiAleatoria(Player jugador) {
+	public InteligenciaAleatoriaAKamikazeAleatoria(Player jugador) {
 		this.jugador = jugador;
 		setPuntox();
 		setPuntoy();
@@ -23,16 +21,12 @@ public class InteligenciaAleatoriaAKamiAleatoria implements InteligenciaMovimien
 		tiempoActivado = System.currentTimeMillis();
 	}
 
-	public InteligenciaAleatoriaAKamiAleatoria() {
+	public InteligenciaAleatoriaAKamikazeAleatoria() {
 		setPuntox();
 		setPuntoy();
 	}
 
 	public void mover(Entity entidad) {
-//		if (cambioSprite == false) {
-//			entidad.setImageActual(entidad.getImageAt(2));
-//			cambioSprite = true;
-//		}
 
 		if (puntox > entidad.getX()) {
 			entidad.setX(entidad.getX() + 1);
@@ -55,6 +49,8 @@ public class InteligenciaAleatoriaAKamiAleatoria implements InteligenciaMovimien
 		long segundosTranscurridos = (tiempoActual - tiempoActivado) / 1000;
 		if (segundosTranscurridos >= duracion) {
 			entidad.setInteligenciaMovimiento(new InteligenciaKamikazeAleatoria(jugador));
+			entidad.setInteligenciaDisparo(new InteligenciaDisparoDummy());
+			entidad.setImageActual(entidad.getImageAt(2));
 		}
 	}
 
@@ -75,9 +71,4 @@ public class InteligenciaAleatoriaAKamiAleatoria implements InteligenciaMovimien
 		int randomNum = ThreadLocalRandom.current().nextInt(1, 250 + 1);
 		puntoy = randomNum;
 	}
-
-	public boolean dispara() {
-		return false;
-	}
-
 }

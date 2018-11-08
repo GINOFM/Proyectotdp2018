@@ -2,32 +2,29 @@ package objetos;
 
 import java.awt.Graphics;
 
-import base.ColDisparoJugador;
+import base.ColDisparoEnemigo;
 import base.Colisionador;
 import entidades.Entity;
-import inteligencias.InteligenciaAscendenteRecta;
 
-public class DisparoJSimplePotenciado extends DisparoJugador {
+public class DisparoEnemigoDirigido extends DisparoEnemigo {
 
-	public DisparoJSimplePotenciado(int x, int y) {
+	public DisparoEnemigoDirigido(int x, int y) {
 		super(x, y);
 		initCraft();
 	}
 
-	@Override
 	protected void initCraft() {
 		velocidadY = 5;
-		daño = 30;
-		loadImage("resources/disparo_jugador_potenciado.png");
+		daño = 5;
+		loadImage("resources/disparo_alien.png");
 		setImageActual(images.get(0));
 		getImageDimensions();
-		col = new ColDisparoJugador(this);
-		inteligenciaMovimiento = new InteligenciaAscendenteRecta();
+		col = new ColDisparoEnemigo(this);
 	}
 
 	public void update() {
-		inteligenciaMovimiento.mover(this);
-		if (y <= 0)
+		y += velocidadY;
+		if (y >= 480)
 			destruir();
 	}
 
@@ -36,7 +33,7 @@ public class DisparoJSimplePotenciado extends DisparoJugador {
 	}
 
 	public void serChocado(Colisionador col) {
-		col.chocaDisparoJugador(this);
+		col.chocaDisparoEnemigo(this);
 	}
 
 	public void chocar(Entity e) {
@@ -48,7 +45,7 @@ public class DisparoJSimplePotenciado extends DisparoJugador {
 	}
 
 	public void golpear(Entity e) {
-		e.quitaVida(daño);
+		e.quitaVida(5);
 	}
 
 	@Override

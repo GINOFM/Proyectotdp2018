@@ -53,8 +53,6 @@ public abstract class Entity {
 	
 	public abstract int obtenerPuntaje();
 	
-	public abstract void afectarPorPowerUp();
-
 	protected void getImageDimensions() {
 
 		width = imagenActual.getWidth(null);

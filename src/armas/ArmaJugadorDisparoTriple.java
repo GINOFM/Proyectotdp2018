@@ -1,4 +1,4 @@
-package inteligencias;
+package armas;
 
 import entidades.Player;
 import gamestates.NivelState;

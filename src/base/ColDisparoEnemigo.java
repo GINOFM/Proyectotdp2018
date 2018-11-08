@@ -1,12 +1,12 @@
 package base;
 
 import entidades.Entity;
-import objetos.DisparoEnemigoSimple;
+import objetos.DisparoEnemigo;
 
 public class ColDisparoEnemigo extends Colisionador{
 
-	public ColDisparoEnemigo(DisparoEnemigoSimple disparoESimple) {
-		entidad = disparoESimple;
+	public ColDisparoEnemigo(DisparoEnemigo disparo) {
+		entidad = disparo;
 	}
 
 	public void chocaEnemigo(Entity e) {

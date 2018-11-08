@@ -1,6 +1,8 @@
 package entidades;
 
 import java.awt.Graphics;
+import java.util.Random;
+
 import base.ColEscombro;
 import base.Colisionador;
 import objetos.PowerUp;
@@ -14,7 +16,14 @@ public class Escombro extends Obstaculo {
 
 	protected void initCraft() {
 		salud = 100;
-		loadImage("resources/asteroide.png");
+		Random random = new Random();
+		int chance = random.nextInt(100);
+		if(chance >= 66)
+			loadImage("resources/asteroide.png");
+		else if(chance >= 33 && chance < 66)
+			loadImage("resources/asteroide_02.png");
+		else if(chance >= 0 && chance < 33)
+			loadImage("resources/asteroide_03.png");
 		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColEscombro(this);
@@ -52,11 +61,6 @@ public class Escombro extends Obstaculo {
 	public int obtenerPuntaje() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	public void afectarPorPowerUp() {
-		// TODO Auto-generated method stub
 	}
 
 	@Override

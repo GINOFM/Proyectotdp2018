@@ -5,20 +5,20 @@ import java.util.concurrent.ThreadLocalRandom;
 import entidades.Entity;
 import entidades.Player;
 
-public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovimiento{
+public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovimiento {
 
 	private int puntox;
 	private int puntoy;
 	private Player jugador;
-	private int contadorDeMovimientos;
+	private int duracion;
+	private long tiempoActivado;
 
-//	private boolean cambioSprite = false;
-	
 	public InteligenciaAleatoriaAKamikazeDirigido(Player jugador) {
 		this.jugador = jugador;
-		contadorDeMovimientos = 3;
 		setPuntox();
 		setPuntoy();
+		tiempoActivado = System.currentTimeMillis();
+		duracion = 10;
 	}
 
 	public InteligenciaAleatoriaAKamikazeDirigido() {
@@ -27,10 +27,6 @@ public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovim
 	}
 
 	public void mover(Entity entidad) {
-//		if (cambioSprite == false) {
-//			entidad.setImageActual(entidad.getImageAt(2));
-//			cambioSprite = true;
-//		}
 
 		if (puntox > entidad.getX()) {
 			entidad.setX(entidad.getX() + 1);
@@ -48,12 +44,15 @@ public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovim
 
 			setPuntox();
 			setPuntoy();
-			contadorDeMovimientos--;
-		}
-		if(contadorDeMovimientos <= 0) {
-			entidad.setInteligenciaMovimiento(new InteligenciaKamikazeDirigidoAAleatoria(jugador));
 		}
 
+		long tiempoActual = System.currentTimeMillis();
+		long segundosTranscurridos = (tiempoActual - tiempoActivado) / 1000;
+		if (segundosTranscurridos >= duracion) {
+			entidad.setInteligenciaMovimiento(new InteligenciaKamikazeDirigidoAAleatoria(jugador));
+			entidad.setInteligenciaDisparo(new InteligenciaDisparoDummy());
+			entidad.setImageActual(entidad.getImageAt(1));
+		}
 	}
 
 	public int getPuntox() {
@@ -61,7 +60,7 @@ public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovim
 	}
 
 	public void setPuntox() {
-		int randomNum = ThreadLocalRandom.current().nextInt(1, 320 * 2 + 1);
+		int randomNum = ThreadLocalRandom.current().nextInt(1, 640 + 1);
 		puntox = randomNum;
 	}
 

@@ -13,7 +13,6 @@ public class ColEnemigo extends Colisionador {
 
 	}
 
-	@Override
 	public void chocaDisparoJugador(Entity e) {
 		entidad.golpear(e);
 	}
@@ -23,8 +22,8 @@ public class ColEnemigo extends Colisionador {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
 	public void chocaJugador(Entity e) {
+		entidad.golpear(e);
 	}
 
 	@Override

@@ -24,7 +24,9 @@ public class InteligenciaKamikazeAleatoria implements InteligenciaMovimiento{
 		entidad.setY(entidad.getY() + 3);
 		if(entidad.getY() > 480) {
 			entidad.setY(0);
-			entidad.setInteligenciaMovimiento(new InteligenciaAleatoriaAKamiAleatoria(jugador));
+			entidad.setInteligenciaMovimiento(new InteligenciaAleatoriaAKamikazeAleatoria(jugador));
+			entidad.setInteligenciaDisparo(new InteligenciaDisparoSimple());
+			entidad.setImageActual(entidad.getImageAt(0));
 		}
 	}
 

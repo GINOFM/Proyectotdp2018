@@ -8,19 +8,12 @@ public class InteligenciaAleatoria implements InteligenciaMovimiento{
 	private int puntox;
 	private int puntoy;
 
-//	private boolean cambioSprite = false;
-	
-
 	public InteligenciaAleatoria() {
 		setPuntox();
 		setPuntoy();
 	}
 
 	public void mover(Entity entidad) {
-//		if (cambioSprite == false) {
-//			entidad.setImageActual(entidad.getImageAt(2));
-//			cambioSprite = true;
-//		}
 
 		if (puntox > entidad.getX()) {
 			entidad.setX(entidad.getX() + 1);

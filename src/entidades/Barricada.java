@@ -14,9 +14,12 @@ public class Barricada extends Obstaculo {
 	}
 
 	protected void initCraft() {
-		salud = 50;
+		salud_maxima = 100;
+		salud = 100;
 		loadImage("resources/barrera.png");
 		setImageActual(images.get(0));
+		loadImage("resources/barrera_02.png");
+		loadImage("resources/barrera_03.png");
 		getImageDimensions();
 		col = new ColBarricada(this);
 	}
@@ -26,6 +29,13 @@ public class Barricada extends Obstaculo {
 	}
 
 	public void render(Graphics g) {
+		int porcentajeSalud = ((salud * 10) / salud_maxima);
+		if (porcentajeSalud > 5)
+			imagenActual = images.get(0);
+		else if (porcentajeSalud > 2 && porcentajeSalud <= 5)
+			imagenActual = images.get(1);
+		else if (porcentajeSalud >= 0 && porcentajeSalud <= 2)
+			imagenActual = images.get(2);
 		g.drawImage(getImageActual(), (int) x, (int) y, null);
 	}
 
@@ -39,7 +49,7 @@ public class Barricada extends Obstaculo {
 
 	public void quitaVida(int dmg) {
 		salud = salud - dmg;
-		if(salud <= 0) {
+		if (salud <= 0) {
 			destruir();
 		}
 	}
@@ -52,11 +62,6 @@ public class Barricada extends Obstaculo {
 	public int obtenerPuntaje() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	public void afectarPorPowerUp() {
-		// TODO Auto-generated method stub
 	}
 
 	@Override

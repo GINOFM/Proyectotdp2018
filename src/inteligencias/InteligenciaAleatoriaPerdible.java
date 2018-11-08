@@ -11,8 +11,6 @@ public class InteligenciaAleatoriaPerdible implements InteligenciaMovimiento {
 	private int puntoy;
 	private Player jugador;
 
-//	private boolean cambioSprite = false;
-
 	public InteligenciaAleatoriaPerdible(Player jugador) {
 		this.jugador = jugador;
 		setPuntox();
@@ -20,10 +18,6 @@ public class InteligenciaAleatoriaPerdible implements InteligenciaMovimiento {
 	}
 
 	public void mover(Entity entidad) {
-//		if (cambioSprite == false) {
-//			entidad.setImageActual(entidad.getImageAt(2));
-//			cambioSprite = true;
-//		}
 
 		if (puntox > entidad.getX()) {
 			entidad.setX(entidad.getX() + 1);
@@ -41,8 +35,10 @@ public class InteligenciaAleatoriaPerdible implements InteligenciaMovimiento {
 			setPuntox();
 			setPuntoy();
 		}
-		if(entidad.getSalud() <= (entidad.getSaludMaxima() * 0.2)) {
+		if (entidad.getSalud() <= (entidad.getSaludMaxima() * 0.2)) {
 			entidad.setInteligenciaMovimiento(new InteligenciaKamikazeDirigida(jugador));
+			entidad.setInteligenciaDisparo(new InteligenciaDisparoDummy());
+			entidad.setImageActual(entidad.getImageAt(1));
 		}
 	}
 

@@ -63,16 +63,11 @@ public class Enemy extends Entity {
 	}
 
 	public void golpear(Entity e) {
-		e.quitaVida(1);
+		e.quitaVida(30);
 	}
 
 	public int obtenerPuntaje() {
 		return 10;
-	}
-
-	@Override
-	public void afectarPorPowerUp() {
-		// TODO Auto-generated method stub
 	}
 
 	public void aceptarPowerUp(PowerUp powerup) {

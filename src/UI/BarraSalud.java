@@ -33,7 +33,11 @@ public class BarraSalud {
 	}
 
 	public void update() {
-		cantidad = (jugador.getSalud() * 10 / jugador.getSaludMaxima());
+		if (jugador.getSalud() < 10 && jugador.getSalud() > 0)
+			cantidad = 1;
+		else
+			cantidad = (jugador.getSalud() * 10 / jugador.getSaludMaxima());
+
 	}
 
 	public void render(Graphics g) {

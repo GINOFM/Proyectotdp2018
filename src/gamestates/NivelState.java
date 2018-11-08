@@ -31,7 +31,7 @@ public abstract class NivelState extends GameState {
 	public NivelState(GameStateManager gsm) {
 		gameStateManager = gsm;
 		fondo = new Fondo();
-		player = new Player(200, 410, this);
+		player = new Player(310, 410, this);
 		bs = new BarraSalud(player);
 		puntaje = 0;
 		fabrica = new FabricaEnemys();
@@ -39,13 +39,15 @@ public abstract class NivelState extends GameState {
 		addEntity(player);
 	}
 
-	public NivelState(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo) {
+	public NivelState(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo,
+			BarraSalud bs) {
 		this.player = player;
 		player.setNivelActual(this);
 		this.puntaje = puntaje;
 		this.fabrica = fabrica;
 		this.fondo = fondo;
-		// agregar bs
+		this.bs = bs;
+		this.gameStateManager = gsm;
 	}
 
 	public void update() {
@@ -84,6 +86,10 @@ public abstract class NivelState extends GameState {
 		entidadesABorrar.clear();
 		if (cantidadEnemigos == 0)
 			pasarAlSiguienteNivel();
+		if (!player.estaActivo()) {
+			gameStateManager.switchState(new DerrotaState(gameStateManager));
+		}
+
 	}
 
 	public void render(Graphics g) {
@@ -97,7 +103,7 @@ public abstract class NivelState extends GameState {
 			entidad.render(g);
 		}
 		g.drawString("Puntaje: " + puntaje, 10, 460);
-		
+
 	}
 
 	public void keyPressed(KeyEvent e) {
@@ -109,7 +115,7 @@ public abstract class NivelState extends GameState {
 		} else if (key == KeyEvent.VK_SPACE && !player.getIsShooting()) {
 			player.setIsShooting(true);
 			player.disparar();
-		}else if (key == KeyEvent.VK_E) {
+		} else if (key == KeyEvent.VK_E) {
 			player.quitaVida(10);
 		}
 	}

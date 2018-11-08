@@ -23,7 +23,10 @@ public class InteligenciaKamikazeDirigidoTemportal implements InteligenciaMovimi
 		if (entidad.getY() > 480) {
 			entidad.setY(0);
 		}
-		if (entidad.getSalud() <= (entidad.getSaludMaxima() / 2))
-			entidad.setInteligenciaMovimiento(new InteligenciaAleatoriaAKamikazeDirigido(jugador));
+		if (entidad.getSalud() <= (entidad.getSaludMaxima() / 2)) {
+			entidad.setInteligenciaMovimiento(new InteligenciaAleatoria());
+			entidad.setImageActual(entidad.getImageAt(3));
+			entidad.setInteligenciaDisparo(new InteligenciaDisparoSimple());
+		}
 	}
 }

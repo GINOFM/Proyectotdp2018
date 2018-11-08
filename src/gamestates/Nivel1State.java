@@ -24,30 +24,44 @@ public class Nivel1State extends NivelState {
 
 	@Override
 	public void init() {
-		cantidadEnemigos = 5;
-//		fabrica.setEnemyBuilder(new KamikazeAleatorioBuilder());
-//		fabrica.construirEnemigo(200, 100, this);
-//		Enemy enemigo = fabrica.getEnemigo();
-//		fabrica.setEnemyBuilder(new AleatorioBuilder());
-//		fabrica.construirEnemigo(400, 10, this);
-//		Enemy enemigo2 = fabrica.getEnemigo();
-//		fabrica.setEnemyBuilder(new KamikazeDirigidoBuilder());
-//		fabrica.construirEnemigo(600, 10, this);
-//		Enemy enemigo3 = fabrica.getEnemigo();
-//		fabrica.setEnemyBuilder(new KamikazeDirigidoBuilder());
-//		fabrica.construirEnemigo(100, 30, this);
-//		Enemy enemigo4 = fabrica.getEnemigo();
-		
+		cantidadEnemigos = 9;
 		fabrica.setEnemyBuilder(new KamikazeAleatorioBuilder());
+		fabrica.construirEnemigo(200, 100, this);
+		Enemy enemigo = fabrica.getEnemigo();
+		fabrica.setEnemyBuilder(new AleatorioBuilder());
+		fabrica.construirEnemigo(400, 10, this);
+		Enemy enemigo2 = fabrica.getEnemigo();
+		fabrica.setEnemyBuilder(new KamikazeDirigidoBuilder());
+		fabrica.construirEnemigo(600, 10, this);
+		Enemy enemigo3 = fabrica.getEnemigo();
+		fabrica.setEnemyBuilder(new KamikazeDirigidoBuilder());
+		fabrica.construirEnemigo(100, 30, this);
+		Enemy enemigo4 = fabrica.getEnemigo();
+		fabrica.setEnemyBuilder(new KamikazeAleatorioPerdibleBuilder());
 		fabrica.construirEnemigo(450, 50, this);
 		Enemy enemigo5 = fabrica.getEnemigo();
-		enemigo5.setInteligenciaDisparo(new InteligenciaDisparoSimple());
+		fabrica.setEnemyBuilder(new AleatorioBuilder());
+		fabrica.construirEnemigo(300, 80, this);
+		Enemy enemigo6 = fabrica.getEnemigo();
+		fabrica.setEnemyBuilder(new AleatorioBuilder());
+		fabrica.construirEnemigo(220, 150, this);
+		Enemy enemigo7 = fabrica.getEnemigo();
+		fabrica.setEnemyBuilder(new AleatorioBuilder());
+		fabrica.construirEnemigo(300, 240, this);
+		Enemy enemigo8 = fabrica.getEnemigo();
+		fabrica.setEnemyBuilder(new AleatorioBuilder());
+		fabrica.construirEnemigo(170, 120, this);
+		Enemy enemigo9 = fabrica.getEnemigo();
 
-//		addEntity(enemigo);
-//		addEntity(enemigo2);
-//		addEntity(enemigo3);
-//		addEntity(enemigo4);
+		addEntity(enemigo);
+		addEntity(enemigo2);
+		addEntity(enemigo3);
+		addEntity(enemigo4);
 		addEntity(enemigo5);
+		addEntity(enemigo6);
+		addEntity(enemigo7);
+		addEntity(enemigo8);
+		addEntity(enemigo9);
 
 		//
 		Entity barrera1 = new Barricada(100, 320);
@@ -61,21 +75,21 @@ public class Nivel1State extends NivelState {
 		addEntity(escombro2);
 		addEntity(escombro3);
 
-		Entity powerUp = new PowerUpArma(100, 300);
-		addEntity(powerUp);
-		Entity powerUp2 = new PowerUpArma(100, 100);
-		addEntity(powerUp2);
-		Entity powerUp3 = new PowerUpPocion(300, 20);
-		addEntity(powerUp3);
-		Entity powerUp4 = new PowerUpCongelar(200, 50);
-		addEntity(powerUp4);
-		Entity powerUp5 = new PowerUpMultiplicador(250, 300);
-		addEntity(powerUp5);
+//		Entity powerUp = new PowerUpArma(100, 300);
+//		addEntity(powerUp);
+//		Entity powerUp2 = new PowerUpArma(100, 100);
+//		addEntity(powerUp2);
+//		Entity powerUp3 = new PowerUpPocion(300, 20);
+//		addEntity(powerUp3);
+//		Entity powerUp4 = new PowerUpCongelar(200, 50);
+//		addEntity(powerUp4);
+//		Entity powerUp5 = new PowerUpMultiplicador(250, 300);
+//		addEntity(powerUp5);
 		
 	}
 
 	public void pasarAlSiguienteNivel() {
-		gameStateManager.switchState(new Nivel2State(gameStateManager, player, puntaje, fabrica, fondo));
+		gameStateManager.switchState(new Nivel2State(gameStateManager, player, puntaje, fabrica, fondo, bs));
 	}
 
 	public Player getPlayer() {

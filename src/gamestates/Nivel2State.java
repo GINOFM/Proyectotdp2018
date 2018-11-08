@@ -1,5 +1,6 @@
 package gamestates;
 
+import UI.BarraSalud;
 import base.Fondo;
 import builders.AleatorioBuilder;
 import builders.FabricaEnemys;
@@ -15,9 +16,10 @@ public class Nivel2State extends NivelState {
 	public Nivel2State(GameStateManager gsm) {
 		super(gsm);
 	}
-	
-	public Nivel2State(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo) {
-		super(gsm, player, puntaje, fabrica, fondo);
+
+	public Nivel2State(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo,
+			BarraSalud bs) {
+		super(gsm, player, puntaje, fabrica, fondo, bs);
 	}
 
 	@Override
@@ -44,7 +46,7 @@ public class Nivel2State extends NivelState {
 		addEntity(barrera1);
 		addEntity(escombro1);
 		addEntity(escombro2);
-		
+
 		cantidadEnemigos = 3;
 	}
 

@@ -1,11 +1,12 @@
 package entidades;
 
 import java.awt.Graphics;
+
+import armas.ArmaJugador;
+import armas.ArmaJugadorDisparoSimple;
 import base.ColJugador;
 import base.Colisionador;
 import gamestates.NivelState;
-import inteligencias.ArmaJugador;
-import inteligencias.ArmaJugadorDisparoSimple;
 import objetos.Escudo;
 import objetos.PowerUp;
 
@@ -13,14 +14,12 @@ public class Player extends Entity {
 
 	private int velocidadX;
 	private Escudo miEscudo;
-	private boolean activo;
 	private Colisionador col;
 	private boolean isShooting = false;
 	private int nivelNave;
 	private ArmaJugador miArma;
 
 	private boolean moverIzquierda, moverDerecha;
-	
 
 	public Player(int x, int y, NivelState nivelActual) {
 		super(x, y);
@@ -37,7 +36,7 @@ public class Player extends Entity {
 		loadImage("resources/player_spaceship_02.png");
 		loadImage("resources/player_spaceship_03.png");
 		getImageDimensions();
-		activo = true;
+		estaActivo = true;
 		col = new ColJugador(this);
 		velocidadX = 5;
 		moverIzquierda = false;
@@ -73,21 +72,6 @@ public class Player extends Entity {
 		miArma.disparar(nivelActual);
 	}
 
-	public void dañar(int daño) {
-		salud = salud - daño;
-		if (salud <= 0) {
-			destruir();
-		}
-	}
-
-	public void destruir() {
-		activo = false;
-	}
-
-	public boolean getActivo() {
-		return activo;
-	}
-
 	public void serChocado(Colisionador col) {
 		col.chocaJugador(this);
 	}
@@ -97,12 +81,15 @@ public class Player extends Entity {
 	}
 
 	public void golpear(Entity e) {
-		e.quitaVida(30);
+		e.quitaVida(1000);
 	}
 
-	public void quitaVida(int dmg) {
-		salud = salud - dmg;
-		if (salud <= 0) {
+	public void quitaVida(int daño) {
+		int saludRestante = salud - daño;
+		if (saludRestante > 0)
+			salud = saludRestante;
+		else {
+			salud = 0;
 			destruir();
 		}
 	}
@@ -133,10 +120,6 @@ public class Player extends Entity {
 		miArma.mejorarArma();
 	}
 
-	public void afectarPorPowerUp() {
-		mejorarNave();
-	}
-
 	public void setNivelActual(NivelState nivelActual) {
 		this.nivelActual = nivelActual;
 	}
@@ -156,7 +139,7 @@ public class Player extends Entity {
 			this.salud = salud;
 		}
 	}
-	
+
 	public ArmaJugador getArma() {
 		return miArma;
 	}

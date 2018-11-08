@@ -5,13 +5,13 @@ import java.util.Random;
 import entidades.Entity;
 import objetos.DisparoEnemigoSimple;
 
-public class InteligenciaDisparoSimple implements InteligenciaDisparo {
+public class InteligenciaDisparoDirigido implements InteligenciaDisparo {
 
 	private long tiempoActivado;
 	private int intervaloEntreDisparos;
 	private Random random;
 
-	public InteligenciaDisparoSimple() {
+	public InteligenciaDisparoDirigido() {
 		tiempoActivado = System.currentTimeMillis();
 		random = new Random();
 		generarNuevoIntervalo();
