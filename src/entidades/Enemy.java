@@ -26,6 +26,7 @@ public class Enemy extends Entity {
 		loadImage("resources/alien_02.png");
 		loadImage("resources/alien_03.png");
 		loadImage("resources/alien_04.png");
+		loadImage("resources/alien_armado_01.png");
 		getImageDimensions();
 		col = new ColEnemigo(this);
 	}

@@ -1,4 +1,4 @@
-package inteligencias;
+package inteligencias_movimiento;
 
 import entidades.Entity;
 

@@ -5,12 +5,13 @@ import builders.KamikazeAleatorioBuilder;
 import builders.KamikazeAleatorioPerdibleBuilder;
 import builders.KamikazeDirigidoBuilder;
 import builders.KamikazeDirigidoTemportalBuilder;
+import builders.TestBuilder;
 import entidades.Barricada;
 import entidades.Enemy;
 import entidades.Entity;
 import entidades.Escombro;
 import entidades.Player;
-import inteligencias.InteligenciaDisparoSimple;
+import inteligencias_disparo.InteligenciaDisparoSimple;
 import objetos.PowerUpArma;
 import objetos.PowerUpCongelar;
 import objetos.PowerUpMultiplicador;
@@ -24,7 +25,7 @@ public class Nivel1State extends NivelState {
 
 	@Override
 	public void init() {
-		cantidadEnemigos = 9;
+		cantidadEnemigos = 8;
 		fabrica.setEnemyBuilder(new KamikazeAleatorioBuilder());
 		fabrica.construirEnemigo(200, 100, this);
 		Enemy enemigo = fabrica.getEnemigo();
@@ -34,24 +35,21 @@ public class Nivel1State extends NivelState {
 		fabrica.setEnemyBuilder(new KamikazeDirigidoBuilder());
 		fabrica.construirEnemigo(600, 10, this);
 		Enemy enemigo3 = fabrica.getEnemigo();
-		fabrica.setEnemyBuilder(new KamikazeDirigidoBuilder());
-		fabrica.construirEnemigo(100, 30, this);
-		Enemy enemigo4 = fabrica.getEnemigo();
 		fabrica.setEnemyBuilder(new KamikazeAleatorioPerdibleBuilder());
 		fabrica.construirEnemigo(450, 50, this);
-		Enemy enemigo5 = fabrica.getEnemigo();
+		Enemy enemigo4 = fabrica.getEnemigo();
 		fabrica.setEnemyBuilder(new AleatorioBuilder());
 		fabrica.construirEnemigo(300, 80, this);
-		Enemy enemigo6 = fabrica.getEnemigo();
+		Enemy enemigo5 = fabrica.getEnemigo();
 		fabrica.setEnemyBuilder(new AleatorioBuilder());
 		fabrica.construirEnemigo(220, 150, this);
-		Enemy enemigo7 = fabrica.getEnemigo();
+		Enemy enemigo6 = fabrica.getEnemigo();
 		fabrica.setEnemyBuilder(new AleatorioBuilder());
 		fabrica.construirEnemigo(300, 240, this);
+		Enemy enemigo7 = fabrica.getEnemigo();
+		fabrica.setEnemyBuilder(new TestBuilder());
+		fabrica.construirEnemigo(170, 20, this);
 		Enemy enemigo8 = fabrica.getEnemigo();
-		fabrica.setEnemyBuilder(new AleatorioBuilder());
-		fabrica.construirEnemigo(170, 120, this);
-		Enemy enemigo9 = fabrica.getEnemigo();
 
 		addEntity(enemigo);
 		addEntity(enemigo2);
@@ -61,7 +59,6 @@ public class Nivel1State extends NivelState {
 		addEntity(enemigo6);
 		addEntity(enemigo7);
 		addEntity(enemigo8);
-		addEntity(enemigo9);
 
 		//
 		Entity barrera1 = new Barricada(100, 320);

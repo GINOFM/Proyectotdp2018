@@ -7,8 +7,8 @@ import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import base.Colisionador;
 import gamestates.NivelState;
-import inteligencias.InteligenciaDisparo;
-import inteligencias.InteligenciaMovimiento;
+import inteligencias_disparo.InteligenciaDisparo;
+import inteligencias_movimiento.InteligenciaMovimiento;
 import objetos.PowerUp;
 
 public abstract class Entity {

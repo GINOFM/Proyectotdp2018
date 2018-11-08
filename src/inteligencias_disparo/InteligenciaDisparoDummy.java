@@ -1,4 +1,4 @@
-package inteligencias;
+package inteligencias_disparo;
 
 import entidades.Entity;
 

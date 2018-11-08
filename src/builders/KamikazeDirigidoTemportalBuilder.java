@@ -1,9 +1,9 @@
 package builders;
 
-import inteligencias.InteligenciaDisparo;
-import inteligencias.InteligenciaDisparoDummy;
-import inteligencias.InteligenciaKamikazeDirigidoTemportal;
-import inteligencias.InteligenciaMovimiento;
+import inteligencias_disparo.InteligenciaDisparo;
+import inteligencias_disparo.InteligenciaDisparoDummy;
+import inteligencias_movimiento.InteligenciaKamikazeDirigidoTemportal;
+import inteligencias_movimiento.InteligenciaMovimiento;
 
 public class KamikazeDirigidoTemportalBuilder extends Enemybuilder {
 

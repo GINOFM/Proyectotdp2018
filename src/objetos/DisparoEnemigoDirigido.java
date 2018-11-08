@@ -1,31 +1,36 @@
 package objetos;
 
 import java.awt.Graphics;
-
 import base.ColDisparoEnemigo;
 import base.Colisionador;
 import entidades.Entity;
+import entidades.Player;
+import inteligencias_movimiento.InteligenciaDirigida;
 
 public class DisparoEnemigoDirigido extends DisparoEnemigo {
 
-	public DisparoEnemigoDirigido(int x, int y) {
+	protected Player jugador;
+	
+	public DisparoEnemigoDirigido(int x, int y, Player jugador) {
 		super(x, y);
+		this.jugador = jugador;
 		initCraft();
 	}
 
 	protected void initCraft() {
-		velocidadY = 5;
 		daño = 5;
-		loadImage("resources/disparo_alien.png");
+		loadImage("resources/disparo_alien_redondo.png");
 		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColDisparoEnemigo(this);
+		inteligenciaMovimiento = new InteligenciaDirigida(x, y, jugador);
 	}
 
 	public void update() {
-		y += velocidadY;
-		if (y >= 480)
+		if (y >= 480) {
 			destruir();
+		}
+		inteligenciaMovimiento.mover(this);
 	}
 
 	public void render(Graphics g) {

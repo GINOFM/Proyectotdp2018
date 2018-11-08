@@ -1,11 +1,12 @@
-package inteligencias;
+package inteligencias_movimiento;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 import entidades.Entity;
 import entidades.Player;
+import inteligencias_disparo.InteligenciaDisparoDummy;
 
-public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovimiento {
+public class InteligenciaAleatoriaAKamikazeAleatoria implements InteligenciaMovimiento {
 
 	private int puntox;
 	private int puntoy;
@@ -13,15 +14,15 @@ public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovim
 	private int duracion;
 	private long tiempoActivado;
 
-	public InteligenciaAleatoriaAKamikazeDirigido(Player jugador) {
+	public InteligenciaAleatoriaAKamikazeAleatoria(Player jugador) {
 		this.jugador = jugador;
 		setPuntox();
 		setPuntoy();
-		tiempoActivado = System.currentTimeMillis();
 		duracion = 10;
+		tiempoActivado = System.currentTimeMillis();
 	}
 
-	public InteligenciaAleatoriaAKamikazeDirigido() {
+	public InteligenciaAleatoriaAKamikazeAleatoria() {
 		setPuntox();
 		setPuntoy();
 	}
@@ -45,13 +46,12 @@ public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovim
 			setPuntox();
 			setPuntoy();
 		}
-
 		long tiempoActual = System.currentTimeMillis();
 		long segundosTranscurridos = (tiempoActual - tiempoActivado) / 1000;
 		if (segundosTranscurridos >= duracion) {
-			entidad.setInteligenciaMovimiento(new InteligenciaKamikazeDirigidoAAleatoria(jugador));
+			entidad.setInteligenciaMovimiento(new InteligenciaKamikazeAleatoria(jugador));
 			entidad.setInteligenciaDisparo(new InteligenciaDisparoDummy());
-			entidad.setImageActual(entidad.getImageAt(1));
+			entidad.setImageActual(entidad.getImageAt(2));
 		}
 	}
 
@@ -60,7 +60,7 @@ public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovim
 	}
 
 	public void setPuntox() {
-		int randomNum = ThreadLocalRandom.current().nextInt(1, 640 + 1);
+		int randomNum = ThreadLocalRandom.current().nextInt(10, 630 + 1);
 		puntox = randomNum;
 	}
 
@@ -72,9 +72,4 @@ public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovim
 		int randomNum = ThreadLocalRandom.current().nextInt(1, 250 + 1);
 		puntoy = randomNum;
 	}
-
-	public boolean dispara() {
-		return false;
-	}
-
 }

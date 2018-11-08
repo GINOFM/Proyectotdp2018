@@ -1,15 +1,15 @@
-package inteligencias;
+package inteligencias_movimiento;
 
 import entidades.Entity;
 import entidades.Player;
 
-public class InteligenciaKamikazeDirigidoAAleatoria implements InteligenciaMovimiento {
+public class InteligenciaKamikazeDirigida implements InteligenciaMovimiento {
 
 	protected Player jugador;
 	protected int velocidadX;
 	protected int velocidadY;
 
-	public InteligenciaKamikazeDirigidoAAleatoria(Player jugador) {
+	public InteligenciaKamikazeDirigida(Player jugador) {
 		this.jugador = jugador;
 	}
 
@@ -21,14 +21,9 @@ public class InteligenciaKamikazeDirigidoAAleatoria implements InteligenciaMovim
 		velocidadY = (int) (velocidadY * factor);
 
 		entidad.setX(entidad.getX() + velocidadX);
-
 		entidad.setY(entidad.getY() + 2);
-		if (entidad.getY() > 480) {
+		if(entidad.getY() > 480) {
 			entidad.setY(0);
-			entidad.setImageActual(entidad.getImageAt(0));
-			entidad.setInteligenciaMovimiento(new InteligenciaAleatoriaAKamikazeDirigido(jugador));
-			entidad.setInteligenciaDisparo(new InteligenciaDisparoSimple());
 		}
 	}
-
 }

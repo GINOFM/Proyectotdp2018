@@ -19,6 +19,10 @@ public class Player extends Entity {
 	private int nivelNave;
 	private ArmaJugador miArma;
 
+	private boolean puedeDisparar;
+	private int intervaloEntreDisparos;
+	private long tiempoActivado;
+
 	private boolean moverIzquierda, moverDerecha;
 
 	public Player(int x, int y, NivelState nivelActual) {
@@ -31,6 +35,8 @@ public class Player extends Entity {
 		nivelNave = 0;
 		salud_maxima = 100;
 		salud = 100;
+		intervaloEntreDisparos = 3;
+		puedeDisparar = true;
 		loadImage("resources/player_spaceship_01.png");
 		setImageActual(images.get(0));
 		loadImage("resources/player_spaceship_02.png");
@@ -49,6 +55,13 @@ public class Player extends Entity {
 			x -= velocidadX;
 		else if (moverDerecha)
 			x += velocidadX;
+
+		long tiempoActual = System.currentTimeMillis();
+		if (!puedeDisparar) {
+			if ((tiempoActual - tiempoActivado) / 100 >= intervaloEntreDisparos) {
+				puedeDisparar = true;
+			}
+		}
 
 		if (x <= 0)
 			x = 0;
@@ -69,7 +82,11 @@ public class Player extends Entity {
 	}
 
 	public void disparar() {
-		miArma.disparar(nivelActual);
+		if (puedeDisparar) {
+			miArma.disparar(nivelActual);
+			puedeDisparar = false;
+			tiempoActivado = System.currentTimeMillis();
+		}
 	}
 
 	public void serChocado(Colisionador col) {

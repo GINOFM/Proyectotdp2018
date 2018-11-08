@@ -1,8 +1,6 @@
-/UI/
-/armas/
-/base/
 /builders/
 /entidades/
 /gamestates/
-/inteligencias/
+/inteligencias_disparo/
+/inteligencias_movimiento/
 /objetos/

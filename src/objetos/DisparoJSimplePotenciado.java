@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import base.ColDisparoJugador;
 import base.Colisionador;
 import entidades.Entity;
-import inteligencias.InteligenciaAscendenteRecta;
+import inteligencias_movimiento.InteligenciaAscendenteRecta;
 
 public class DisparoJSimplePotenciado extends DisparoJugador {
 

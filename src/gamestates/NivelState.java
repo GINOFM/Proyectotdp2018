@@ -1,4 +1,4 @@
-package gamestates;
+	package gamestates;
 
 import java.awt.Color;
 import java.awt.Font;

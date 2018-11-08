@@ -1,9 +1,9 @@
 package builders;
 
-import inteligencias.InteligenciaAleatoriaPerdible;
-import inteligencias.InteligenciaDisparo;
-import inteligencias.InteligenciaDisparoSimple;
-import inteligencias.InteligenciaMovimiento;
+import inteligencias_disparo.InteligenciaDisparo;
+import inteligencias_disparo.InteligenciaDisparoSimple;
+import inteligencias_movimiento.InteligenciaAleatoriaPerdible;
+import inteligencias_movimiento.InteligenciaMovimiento;
 
 public class KamikazeAleatorioPerdibleBuilder  extends Enemybuilder {
 

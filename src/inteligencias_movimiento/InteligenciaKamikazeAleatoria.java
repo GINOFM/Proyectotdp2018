@@ -1,9 +1,10 @@
-package inteligencias;
+package inteligencias_movimiento;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 import entidades.Entity;
 import entidades.Player;
+import inteligencias_disparo.InteligenciaDisparoSimple;
 
 public class InteligenciaKamikazeAleatoria implements InteligenciaMovimiento{
 

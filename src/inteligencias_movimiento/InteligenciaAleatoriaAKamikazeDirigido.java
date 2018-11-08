@@ -1,11 +1,12 @@
-package inteligencias;
+package inteligencias_movimiento;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 import entidades.Entity;
 import entidades.Player;
+import inteligencias_disparo.InteligenciaDisparoDummy;
 
-public class InteligenciaAleatoriaAKamikazeAleatoria implements InteligenciaMovimiento {
+public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovimiento {
 
 	private int puntox;
 	private int puntoy;
@@ -13,15 +14,15 @@ public class InteligenciaAleatoriaAKamikazeAleatoria implements InteligenciaMovi
 	private int duracion;
 	private long tiempoActivado;
 
-	public InteligenciaAleatoriaAKamikazeAleatoria(Player jugador) {
+	public InteligenciaAleatoriaAKamikazeDirigido(Player jugador) {
 		this.jugador = jugador;
 		setPuntox();
 		setPuntoy();
-		duracion = 10;
 		tiempoActivado = System.currentTimeMillis();
+		duracion = 10;
 	}
 
-	public InteligenciaAleatoriaAKamikazeAleatoria() {
+	public InteligenciaAleatoriaAKamikazeDirigido() {
 		setPuntox();
 		setPuntoy();
 	}
@@ -45,12 +46,13 @@ public class InteligenciaAleatoriaAKamikazeAleatoria implements InteligenciaMovi
 			setPuntox();
 			setPuntoy();
 		}
+
 		long tiempoActual = System.currentTimeMillis();
 		long segundosTranscurridos = (tiempoActual - tiempoActivado) / 1000;
 		if (segundosTranscurridos >= duracion) {
-			entidad.setInteligenciaMovimiento(new InteligenciaKamikazeAleatoria(jugador));
+			entidad.setInteligenciaMovimiento(new InteligenciaKamikazeDirigidoAAleatoria(jugador));
 			entidad.setInteligenciaDisparo(new InteligenciaDisparoDummy());
-			entidad.setImageActual(entidad.getImageAt(2));
+			entidad.setImageActual(entidad.getImageAt(1));
 		}
 	}
 
@@ -59,7 +61,7 @@ public class InteligenciaAleatoriaAKamikazeAleatoria implements InteligenciaMovi
 	}
 
 	public void setPuntox() {
-		int randomNum = ThreadLocalRandom.current().nextInt(10, 630 + 1);
+		int randomNum = ThreadLocalRandom.current().nextInt(1, 640 + 1);
 		puntox = randomNum;
 	}
 
@@ -71,4 +73,9 @@ public class InteligenciaAleatoriaAKamikazeAleatoria implements InteligenciaMovi
 		int randomNum = ThreadLocalRandom.current().nextInt(1, 250 + 1);
 		puntoy = randomNum;
 	}
+
+	public boolean dispara() {
+		return false;
+	}
+
 }

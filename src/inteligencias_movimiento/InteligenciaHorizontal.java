@@ -1,10 +1,10 @@
-package inteligencias;
+package inteligencias_movimiento;
 
 import entidades.Entity;
 
 public class InteligenciaHorizontal implements InteligenciaMovimiento {
 
-	private int puntoXmaximo = 310 * 2;
+	private int puntoXmaximo = 620;
 	private int puntoXminimo = 0;
 	private boolean izquierda = true;
 

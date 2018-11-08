@@ -1,7 +1,7 @@
 package builders;
 
-import inteligencias.InteligenciaHorizontal;
-import inteligencias.InteligenciaMovimiento;
+import inteligencias_movimiento.InteligenciaHorizontal;
+import inteligencias_movimiento.InteligenciaMovimiento;
 
 public class HorizontalBuilder extends Enemybuilder{
 

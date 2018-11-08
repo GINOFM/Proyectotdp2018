@@ -1,7 +1,7 @@
 package builders;
 
 import gamestates.NivelState;
-import inteligencias.InteligenciaDescendienteRecta;
+import inteligencias_movimiento.InteligenciaDescendienteRecta;
 import objetos.DisparoEnemigoSimple;
 
 public class DisparoSimpleDescendienteBuilder extends DisparoEnemigoBuilder {

@@ -3,8 +3,8 @@ package armas;
 import entidades.Entity;
 import entidades.Player;
 import gamestates.NivelState;
-import inteligencias.InteligenciaAscendenteDiagonalDerecha;
-import inteligencias.InteligenciaAscendenteDiagonalIzquierda;
+import inteligencias_movimiento.InteligenciaAscendenteDiagonalDerecha;
+import inteligencias_movimiento.InteligenciaAscendenteDiagonalIzquierda;
 import objetos.DisparoJSimplePotenciado;
 
 public class ArmaJugDispQuintPotenciado extends ArmaJugador {

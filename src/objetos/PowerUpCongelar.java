@@ -7,10 +7,10 @@ import base.ColPowerUp;
 import entidades.Enemy;
 import entidades.Entity;
 import entidades.Player;
-import inteligencias.InteligenciaDisparo;
-import inteligencias.InteligenciaDisparoDummy;
-import inteligencias.InteligenciaDummy;
-import inteligencias.InteligenciaMovimiento;
+import inteligencias_disparo.InteligenciaDisparo;
+import inteligencias_disparo.InteligenciaDisparoDummy;
+import inteligencias_movimiento.InteligenciaDummy;
+import inteligencias_movimiento.InteligenciaMovimiento;
 
 public class PowerUpCongelar extends PowerUp implements Runnable {
 

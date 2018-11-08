@@ -1,17 +1,17 @@
-package inteligencias;
+package inteligencias_disparo;
 
 import java.util.Random;
 
 import entidades.Entity;
 import objetos.DisparoEnemigoSimple;
 
-public class InteligenciaDisparoDirigido implements InteligenciaDisparo {
+public class InteligenciaDisparoSimple implements InteligenciaDisparo {
 
 	private long tiempoActivado;
 	private int intervaloEntreDisparos;
 	private Random random;
 
-	public InteligenciaDisparoDirigido() {
+	public InteligenciaDisparoSimple() {
 		tiempoActivado = System.currentTimeMillis();
 		random = new Random();
 		generarNuevoIntervalo();
