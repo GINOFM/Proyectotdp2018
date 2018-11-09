@@ -1,5 +1,6 @@
 package gamestates;
 
+import UI.BarraEscudo;
 import UI.BarraSalud;
 import base.Fondo;
 import builders.AleatorioBuilder;
@@ -21,8 +22,8 @@ public class Nivel2State extends NivelState {
 	}
 
 	public Nivel2State(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo,
-			BarraSalud bs) {
-		super(gsm, player, puntaje, fabrica, fondo, bs);
+			BarraSalud bs,BarraEscudo be) {
+		super(gsm, player, puntaje, fabrica, fondo, bs,be);
 	}
 
 	@Override

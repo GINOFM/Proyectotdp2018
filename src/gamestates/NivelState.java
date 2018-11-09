@@ -7,11 +7,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 
+import UI.BarraEscudo;
 import UI.BarraSalud;
 import base.Fondo;
 import builders.FabricaEnemys;
 import entidades.Entity;
 import entidades.Player;
+import objetos.Escudo;
 
 public abstract class NivelState extends GameState {
 
@@ -27,32 +29,38 @@ public abstract class NivelState extends GameState {
 	protected int cantidadEnemigos;
 	protected FabricaEnemys fabrica;
 	protected BarraSalud bs;
+	protected BarraEscudo be;
 
 	public NivelState(GameStateManager gsm) {
 		gameStateManager = gsm;
 		fondo = new Fondo();
 		player = new Player(310, 410, this);
+		player.setMiEscudo( new Escudo(player.getX(),player.getY()-20,this));
 		bs = new BarraSalud(player);
+		be = new BarraEscudo(player.getMiEscudo());
 		puntaje = 0;
 		fabrica = new FabricaEnemys();
 		gameStateManager = gsm;
 		addEntity(player);
+		addEntity(player.getMiEscudo());
 	}
 
 	public NivelState(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo,
-			BarraSalud bs) {
+			BarraSalud bs,BarraEscudo be) {
 		this.player = player;
 		player.setNivelActual(this);
 		this.puntaje = puntaje;
 		this.fabrica = fabrica;
 		this.fondo = fondo;
 		this.bs = bs;
+		this.be = be;
 		this.gameStateManager = gsm;
 	}
 
 	public void update() {
 		fondo.update();
 		bs.update();
+		be.update();
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
 			entidad.update();
@@ -98,6 +106,7 @@ public abstract class NivelState extends GameState {
 		g.setColor(Color.white);
 		fondo.render(g);
 		bs.render(g);
+		be.render(g);
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
 			entidad.render(g);

@@ -40,4 +40,10 @@ public class ColDisparoEnemigo extends Colisionador{
 	public void chocaPowerUp(Entity e) {
 		// TODO Auto-generated method stub
 	}
+
+	@Override
+	public void chocaEscudo(Entity e) {
+		entidad.golpear(e);
+		
+	}
 }

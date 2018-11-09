@@ -19,5 +19,7 @@ public abstract class Colisionador {
 	public abstract void chocaBarricada(Entity e);
 
 	public abstract void chocaPowerUp(Entity e);
+	
+	public abstract void chocaEscudo(Entity e);
 		
 }
