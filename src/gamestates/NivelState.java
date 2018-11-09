@@ -1,4 +1,4 @@
-	package gamestates;
+package gamestates;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,11 +7,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 
+import UI.BarraEscudo;
 import UI.BarraSalud;
 import base.Fondo;
 import builders.FabricaEnemys;
 import entidades.Entity;
 import entidades.Player;
+import objetos.Escudo;
+import objetos.PowerUpEscudo;
 
 public abstract class NivelState extends GameState {
 
@@ -27,12 +30,14 @@ public abstract class NivelState extends GameState {
 	protected int cantidadEnemigos;
 	protected FabricaEnemys fabrica;
 	protected BarraSalud bs;
+	protected BarraEscudo be;
 
 	public NivelState(GameStateManager gsm) {
 		gameStateManager = gsm;
 		fondo = new Fondo();
 		player = new Player(310, 410, this);
 		bs = new BarraSalud(player);
+		be = new BarraEscudo();
 		puntaje = 0;
 		fabrica = new FabricaEnemys();
 		gameStateManager = gsm;
@@ -40,19 +45,21 @@ public abstract class NivelState extends GameState {
 	}
 
 	public NivelState(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo,
-			BarraSalud bs) {
+			BarraSalud bs, BarraEscudo be) {
 		this.player = player;
 		player.setNivelActual(this);
 		this.puntaje = puntaje;
 		this.fabrica = fabrica;
 		this.fondo = fondo;
 		this.bs = bs;
+		this.be = be;
 		this.gameStateManager = gsm;
 	}
 
 	public void update() {
 		fondo.update();
 		bs.update();
+		be.update();
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
 			entidad.update();
@@ -60,11 +67,13 @@ public abstract class NivelState extends GameState {
 
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
+
 			for (int j = 0; j < entidades.size(); j++) {
 				if (i != j) {
 					entidadAux = entidades.get(j);
 					if (entidad.getBounds().intersects(entidadAux.getBounds())) {
-						entidad.chocar(entidadAux);
+						if (entidadAux.estaActivo())
+							entidad.chocar(entidadAux);
 					}
 				}
 			}
@@ -89,7 +98,7 @@ public abstract class NivelState extends GameState {
 		if (!player.estaActivo()) {
 			gameStateManager.switchState(new DerrotaState(gameStateManager));
 		}
-
+		
 	}
 
 	public void render(Graphics g) {
@@ -98,6 +107,7 @@ public abstract class NivelState extends GameState {
 		g.setColor(Color.white);
 		fondo.render(g);
 		bs.render(g);
+		be.render(g);
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
 			entidad.render(g);
@@ -165,5 +175,9 @@ public abstract class NivelState extends GameState {
 
 	public LinkedList<Entity> getEntities() {
 		return entidades;
+	}
+
+	public BarraEscudo getBarraEscudo() {
+		return be;
 	}
 }

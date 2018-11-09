@@ -14,8 +14,8 @@ public class Barricada extends Obstaculo {
 	}
 
 	protected void initCraft() {
-		salud_maxima = 100;
-		salud = 100;
+		salud_maxima = 200;
+		salud = 200;
 		loadImage("resources/barrera.png");
 		setImageActual(images.get(0));
 		loadImage("resources/barrera_02.png");

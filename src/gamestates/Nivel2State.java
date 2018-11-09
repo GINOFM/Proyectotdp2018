@@ -1,5 +1,6 @@
 package gamestates;
 
+import UI.BarraEscudo;
 import UI.BarraSalud;
 import base.Fondo;
 import builders.AleatorioBuilder;
@@ -21,15 +22,16 @@ public class Nivel2State extends NivelState {
 	}
 
 	public Nivel2State(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo,
-			BarraSalud bs) {
-		super(gsm, player, puntaje, fabrica, fondo, bs);
+			BarraSalud bs,BarraEscudo be) {
+		super(gsm, player, puntaje, fabrica, fondo, bs,be);
 	}
 
 	@Override
 	public void init() {
 		limpiarListaEntidades();
 		addEntity(player);
-	
+		cantidadEnemigos = 10;
+		
 		fabrica.setEnemyBuilder(new KamikazeAleatorioBuilder());
 		fabrica.construirEnemigo(200, 100, this);
 		Enemy enemigo = fabrica.getEnemigo();
@@ -93,12 +95,10 @@ public class Nivel2State extends NivelState {
 		addEntity(escombro7);
 		addEntity(escombro8);
 
-		cantidadEnemigos = 3;
 	}
 
-	@Override
 	public void pasarAlSiguienteNivel() {
-		// TODO Auto-generated method stub
+		gameStateManager.switchState(new VictoriaState(gameStateManager, puntaje));
 	}
 
 	@Override

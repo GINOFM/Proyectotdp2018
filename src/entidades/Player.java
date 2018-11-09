@@ -67,6 +67,9 @@ public class Player extends Entity {
 			x = 0;
 		if (x >= 640 - 30)
 			x = 640 - 30;
+		
+		if(salud==0)
+			destruir();
 	}
 
 	public void render(Graphics g) {
@@ -107,7 +110,6 @@ public class Player extends Entity {
 			salud = saludRestante;
 		else {
 			salud = 0;
-			destruir();
 		}
 	}
 
@@ -159,5 +161,9 @@ public class Player extends Entity {
 
 	public ArmaJugador getArma() {
 		return miArma;
+	}
+	
+	public Escudo getMiEscudo() {
+		return miEscudo;
 	}
 }

@@ -23,7 +23,6 @@ public class Nivel1State extends NivelState {
 		super(gsm);
 	}
 
-	@Override
 	public void init() {
 		cantidadEnemigos = 8;
 		fabrica.setEnemyBuilder(new KamikazeAleatorioBuilder());
@@ -72,21 +71,10 @@ public class Nivel1State extends NivelState {
 		addEntity(escombro2);
 		addEntity(escombro3);
 
-//		Entity powerUp = new PowerUpArma(100, 300);
-//		addEntity(powerUp);
-//		Entity powerUp2 = new PowerUpArma(100, 100);
-//		addEntity(powerUp2);
-//		Entity powerUp3 = new PowerUpPocion(300, 20);
-//		addEntity(powerUp3);
-//		Entity powerUp4 = new PowerUpCongelar(200, 50);
-//		addEntity(powerUp4);
-//		Entity powerUp5 = new PowerUpMultiplicador(250, 300);
-//		addEntity(powerUp5);
-		
 	}
 
 	public void pasarAlSiguienteNivel() {
-		gameStateManager.switchState(new Nivel2State(gameStateManager, player, puntaje, fabrica, fondo, bs));
+		gameStateManager.switchState(new Nivel2State(gameStateManager, player, puntaje, fabrica, fondo, bs, be));
 	}
 
 	public Player getPlayer() {

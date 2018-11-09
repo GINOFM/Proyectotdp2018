@@ -43,4 +43,10 @@ public class ColPowerUp extends Colisionador{
 	public void chocaPowerUp(Entity e) {
 		// TODO Auto-generated method stub
 	}
+
+	@Override
+	public void chocaEscudo(Entity e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
