@@ -42,5 +42,6 @@ public class BarraEscudo {
 
 	public void setEscudo(Escudo escudo) {
 		this.escudo = escudo;
+
 	}
 }

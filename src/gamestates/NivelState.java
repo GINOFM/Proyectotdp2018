@@ -13,8 +13,6 @@ import base.Fondo;
 import builders.FabricaEnemys;
 import entidades.Entity;
 import entidades.Player;
-import objetos.Escudo;
-import objetos.PowerUpEscudo;
 
 public abstract class NivelState extends GameState {
 
@@ -38,6 +36,7 @@ public abstract class NivelState extends GameState {
 		player = new Player(310, 410, this);
 		bs = new BarraSalud(player);
 		be = new BarraEscudo();
+
 		puntaje = 0;
 		fabrica = new FabricaEnemys();
 		gameStateManager = gsm;
@@ -46,6 +45,7 @@ public abstract class NivelState extends GameState {
 
 	public NivelState(GameStateManager gsm, Player player, int puntaje, FabricaEnemys fabrica, Fondo fondo,
 			BarraSalud bs, BarraEscudo be) {
+
 		this.player = player;
 		player.setNivelActual(this);
 		this.puntaje = puntaje;
@@ -96,9 +96,9 @@ public abstract class NivelState extends GameState {
 		if (cantidadEnemigos == 0)
 			pasarAlSiguienteNivel();
 		if (!player.estaActivo()) {
-			gameStateManager.switchState(new DerrotaState(gameStateManager));
+			gameStateManager.switchState(new DerrotaState(gameStateManager, puntaje));
 		}
-		
+
 	}
 
 	public void render(Graphics g) {

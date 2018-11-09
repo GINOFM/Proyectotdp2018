@@ -9,12 +9,15 @@ import gamestates.NivelState;
 public class Escudo extends Entity {
 
 	private Colisionador ColEscudo;
+
 	private NivelState nivelActual;
 
 	public Escudo(int x, int y, NivelState na) {
+
 		super(x, y);
 		nivelActual = na;
 		initCraft();
+
 	}
 
 	protected void initCraft() {

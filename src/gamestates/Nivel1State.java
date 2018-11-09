@@ -75,6 +75,7 @@ public class Nivel1State extends NivelState {
 
 	public void pasarAlSiguienteNivel() {
 		gameStateManager.switchState(new Nivel2State(gameStateManager, player, puntaje, fabrica, fondo, bs, be));
+
 	}
 
 	public Player getPlayer() {

@@ -1,5 +1,7 @@
 package gamestates;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -14,9 +16,11 @@ public class DerrotaState extends GameState {
 	protected Image fondo;
 	protected Image boton_reiniciar;
 	protected Image boton_salir;
+	protected int puntaje;
 
-	public DerrotaState(GameStateManager gsm) {
+	public DerrotaState(GameStateManager gsm, int puntaje) {
 		gameStateManager = gsm;
+		this.puntaje = puntaje;
 	}
 
 	public void init() {
@@ -38,6 +42,11 @@ public class DerrotaState extends GameState {
 		g.drawImage(fondo, 0, 0, null);
 		g.drawImage(boton_reiniciar, 200, 210, null);
 		g.drawImage(boton_salir, 240, 310, null);
+		
+		Font fnt0 = new Font("arial", Font.BOLD, 40);
+		g.setFont(fnt0);
+		g.setColor(Color.white);
+		g.drawString("Puntaje: " + puntaje, 220, 420);
 	}
 
 	@Override
