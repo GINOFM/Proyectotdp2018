@@ -27,6 +27,7 @@ public abstract class Entity {
 	
 	protected int velocidadY;
 	protected NivelState nivelActual;
+	protected Colisionador col;
 
 	public Entity(int x, int y) {
 		this.x = x;
@@ -120,8 +121,8 @@ public abstract class Entity {
 		velocidadY = valor;
 	}
 
-	public void setInteligenciaMovimiento(InteligenciaMovimiento inteligencia) {
-		this.inteligenciaMovimiento = inteligencia;
+	public void setInteligenciaMovimiento(InteligenciaMovimiento intM) {
+		this.inteligenciaMovimiento = intM;
 	}
 
 	public InteligenciaMovimiento getInteligencia() {
@@ -144,7 +145,7 @@ public abstract class Entity {
 		return inteligenciaDisparo;
 	}
 
-	public void setInteligenciaDisparo(InteligenciaDisparo inteligenciaDisparo) {
-		this.inteligenciaDisparo = inteligenciaDisparo;
+	public void setInteligenciaDisparo(InteligenciaDisparo intD) {
+		this.inteligenciaDisparo = intD;
 	}
 }

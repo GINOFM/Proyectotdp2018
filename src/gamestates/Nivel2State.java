@@ -5,10 +5,10 @@ import UI.BarraSalud;
 import base.Fondo;
 import builders.AleatorioBuilder;
 import builders.FabricaEnemys;
+import builders.HorizontalBuilder;
 import builders.KamikazeAleatorioBuilder;
 import builders.KamikazeAleatorioPerdibleBuilder;
 import builders.KamikazeDirigidoBuilder;
-import builders.TestBuilder;
 import entidades.Barricada;
 import entidades.Enemy;
 import entidades.Entity;
@@ -53,10 +53,10 @@ public class Nivel2State extends NivelState {
 		fabrica.setEnemyBuilder(new AleatorioBuilder());
 		fabrica.construirEnemigo(300, 240, this);
 		Enemy enemigo7 = fabrica.getEnemigo();
-		fabrica.setEnemyBuilder(new TestBuilder());
+		fabrica.setEnemyBuilder(new HorizontalBuilder());
 		fabrica.construirEnemigo(470, 20, this);
 		Enemy enemigo8 = fabrica.getEnemigo();
-		fabrica.setEnemyBuilder(new TestBuilder());
+		fabrica.setEnemyBuilder(new HorizontalBuilder());
 		fabrica.construirEnemigo(120, 70, this);
 		Enemy enemigo9 = fabrica.getEnemigo();
 		fabrica.setEnemyBuilder(new KamikazeDirigidoBuilder());
@@ -101,8 +101,4 @@ public class Nivel2State extends NivelState {
 		gameStateManager.switchState(new VictoriaState(gameStateManager, puntaje));
 	}
 
-	@Override
-	public Player getPlayer() {
-		return player;
-	}
 }

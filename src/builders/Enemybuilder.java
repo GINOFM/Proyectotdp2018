@@ -13,11 +13,7 @@ public abstract class Enemybuilder {
 		return enemigo;
 	}
 	
-	public void crearEnemigo(int x,int y, NivelState nivelActual)
-	{
-		this.nivelActual = nivelActual;
-		enemigo = new Enemy(x,y, nivelActual);
-	}
+	public abstract void crearEnemigo(int x,int y, NivelState nivelActual);
 	
 	public abstract void buildInteligencia();
 }

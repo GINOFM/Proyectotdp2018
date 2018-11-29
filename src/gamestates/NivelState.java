@@ -24,7 +24,7 @@ public abstract class NivelState extends GameState {
 
 	protected Player player;
 	protected int puntaje;
-	protected Fondo fondo;
+	protected Fondo fondo; 
 	protected int cantidadEnemigos;
 	protected FabricaEnemys fabrica;
 	protected BarraSalud bs;

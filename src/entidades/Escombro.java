@@ -45,7 +45,6 @@ public class Escombro extends Obstaculo {
 		e.serChocado(col);
 	}
 
-	@Override
 	public void quitaVida(int dmg) {
 		salud = salud - dmg;
 		if(salud <= 0) {

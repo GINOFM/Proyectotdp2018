@@ -6,11 +6,10 @@ import entidades.Entity;
 import entidades.Player;
 import inteligencias_disparo.InteligenciaDisparoDummy;
 
-public class InteligenciaAleatoriaAKamikazeAleatoria implements InteligenciaMovimiento {
+public class InteligenciaAleatoriaAKamikazeAleatoria extends InteligenciaMovimientoPlayerRelated {
 
 	private int puntox;
 	private int puntoy;
-	private Player jugador;
 	private int duracion;
 	private long tiempoActivado;
 
@@ -21,12 +20,7 @@ public class InteligenciaAleatoriaAKamikazeAleatoria implements InteligenciaMovi
 		duracion = 10;
 		tiempoActivado = System.currentTimeMillis();
 	}
-
-	public InteligenciaAleatoriaAKamikazeAleatoria() {
-		setPuntox();
-		setPuntoy();
-	}
-
+	
 	public void mover(Entity entidad) {
 
 		if (puntox > entidad.getX()) {

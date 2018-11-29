@@ -6,10 +6,9 @@ import entidades.Entity;
 import entidades.Player;
 import inteligencias_disparo.InteligenciaDisparoSimple;
 
-public class InteligenciaKamikazeAleatoria implements InteligenciaMovimiento{
+public class InteligenciaKamikazeAleatoria extends InteligenciaMovimientoPlayerRelated {
 
 	private int puntox;
-	private Player jugador;
 
 	public InteligenciaKamikazeAleatoria(Player jugador) {
 		this.jugador = jugador;

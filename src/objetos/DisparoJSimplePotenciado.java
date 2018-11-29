@@ -14,7 +14,6 @@ public class DisparoJSimplePotenciado extends DisparoJugador {
 		initCraft();
 	}
 
-	@Override
 	protected void initCraft() {
 		velocidadY = 5;
 		daño = 30;
@@ -51,9 +50,7 @@ public class DisparoJSimplePotenciado extends DisparoJugador {
 		e.quitaVida(daño);
 	}
 
-	@Override
 	public int obtenerPuntaje() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

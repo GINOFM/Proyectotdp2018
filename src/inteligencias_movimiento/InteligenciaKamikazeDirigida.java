@@ -3,9 +3,8 @@ package inteligencias_movimiento;
 import entidades.Entity;
 import entidades.Player;
 
-public class InteligenciaKamikazeDirigida implements InteligenciaMovimiento {
+public class InteligenciaKamikazeDirigida extends InteligenciaMovimientoPlayerRelated {
 
-	protected Player jugador;
 	protected int velocidadX;
 	protected int velocidadY;
 

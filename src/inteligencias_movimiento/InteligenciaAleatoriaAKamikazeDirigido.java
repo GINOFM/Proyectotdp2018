@@ -6,11 +6,10 @@ import entidades.Entity;
 import entidades.Player;
 import inteligencias_disparo.InteligenciaDisparoDummy;
 
-public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovimiento {
+public class InteligenciaAleatoriaAKamikazeDirigido extends InteligenciaMovimientoPlayerRelated {
 
 	private int puntox;
 	private int puntoy;
-	private Player jugador;
 	private int duracion;
 	private long tiempoActivado;
 
@@ -20,11 +19,6 @@ public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovim
 		setPuntoy();
 		tiempoActivado = System.currentTimeMillis();
 		duracion = 10;
-	}
-
-	public InteligenciaAleatoriaAKamikazeDirigido() {
-		setPuntox();
-		setPuntoy();
 	}
 
 	public void mover(Entity entidad) {
@@ -72,10 +66,6 @@ public class InteligenciaAleatoriaAKamikazeDirigido implements InteligenciaMovim
 	public void setPuntoy() {
 		int randomNum = ThreadLocalRandom.current().nextInt(1, 250 + 1);
 		puntoy = randomNum;
-	}
-
-	public boolean dispara() {
-		return false;
 	}
 
 }

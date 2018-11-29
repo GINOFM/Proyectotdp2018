@@ -23,7 +23,7 @@ public abstract class GameState {
 
 	public abstract void mouseClicked(MouseEvent e);
 	
-	public void setGameStateManager(GameStateManager gameStateManager) {
-		this.gameStateManager = gameStateManager;
+	public void setGameStateManager(GameStateManager gsm) {
+		this.gameStateManager = gsm;
 	}
 }

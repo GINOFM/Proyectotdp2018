@@ -4,13 +4,12 @@ import entidades.Entity;
 import entidades.Player;
 import inteligencias_disparo.InteligenciaDisparoSimple;
 
-public class InteligenciaKamikazeDirigidoTemportal implements InteligenciaMovimiento {
+public class InteligenciaKamikazeDirigidoTemporal extends InteligenciaMovimientoPlayerRelated {
 
-	protected Player jugador;
 	protected int velocidadX;
 	protected int velocidadY;
 
-	public InteligenciaKamikazeDirigidoTemportal(Player jugador) {
+	public InteligenciaKamikazeDirigidoTemporal(Player jugador) {
 		this.jugador = jugador;
 	}
 

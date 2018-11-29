@@ -34,12 +34,10 @@ public class DisparoJSimple extends DisparoJugador {
 		g.drawImage(getImageActual(), (int) x, (int) y, null);
 	}
 
-	@Override
 	public void serChocado(Colisionador col) {
 		col.chocaDisparoJugador(this);
 	}
 
-	@Override
 	public void chocar(Entity e) {
 		e.serChocado(col);
 	}
@@ -53,9 +51,7 @@ public class DisparoJSimple extends DisparoJugador {
 		e.quitaVida(daño);
 	}
 
-	@Override
 	public int obtenerPuntaje() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

@@ -14,7 +14,6 @@ public class Player extends Entity {
 
 	private int velocidadX;
 	private Escudo miEscudo;
-	private Colisionador col;
 	private boolean isShooting = false;
 	private int nivelNave;
 	private ArmaJugador miArma;
@@ -25,9 +24,9 @@ public class Player extends Entity {
 
 	private boolean moverIzquierda, moverDerecha;
 
-	public Player(int x, int y, NivelState nivelActual) {
+	public Player(int x, int y, NivelState nA) {
 		super(x, y);
-		this.nivelActual = nivelActual;
+		this.nivelActual = nA;
 		initCraft();
 	}
 
@@ -143,8 +142,8 @@ public class Player extends Entity {
 		this.nivelActual = nivelActual;
 	}
 
-	public void setArmaJugador(ArmaJugador nuevaArma) {
-		miArma = nuevaArma;
+	public void setArmaJugador(ArmaJugador nArma) {
+		miArma = nArma;
 	}
 
 	public void aceptarPowerUp(PowerUp powerup) {

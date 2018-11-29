@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import base.ColDisparoEnemigo;
 import base.Colisionador;
 import entidades.Entity;
+import inteligencias_movimiento.InteligenciaDescendienteRecta;
+import inteligencias_movimiento.InteligenciaDirigida;
 
 public class DisparoEnemigoSimple extends DisparoEnemigo {
 
@@ -20,10 +22,11 @@ public class DisparoEnemigoSimple extends DisparoEnemigo {
 		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColDisparoEnemigo(this);
+		inteligenciaMovimiento = new InteligenciaDescendienteRecta();
 	}
-
+		
 	public void update() {
-		y += velocidadY;
+		inteligenciaMovimiento.mover(this);
 		if (y >= 480)
 			destruir();
 	}
@@ -48,9 +51,7 @@ public class DisparoEnemigoSimple extends DisparoEnemigo {
 		e.quitaVida(5);
 	}
 
-	@Override
 	public int obtenerPuntaje() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

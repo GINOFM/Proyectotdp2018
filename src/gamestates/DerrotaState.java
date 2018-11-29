@@ -49,9 +49,7 @@ public class DerrotaState extends GameState {
 		g.drawString("Puntaje: " + puntaje, 220, 420);
 	}
 
-	@Override
 	public Player getPlayer() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

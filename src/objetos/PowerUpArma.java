@@ -13,7 +13,6 @@ public class PowerUpArma extends PowerUp{
 
 	protected void initCraft() {
 		velocidadY = 1;
-		velocidadX = 3;
 		loadImage("resources/powerup_arma.png");
 		setImageActual(images.get(0));
 		getImageDimensions();

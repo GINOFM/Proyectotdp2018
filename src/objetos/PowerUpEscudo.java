@@ -13,7 +13,6 @@ public class PowerUpEscudo extends PowerUp {
 
 	protected void initCraft() {
 		velocidadY = 1;
-		velocidadX = 3;
 		loadImage("resources/powerup_escudo.png");
 		setImageActual(images.get(0));
 		getImageDimensions();
@@ -21,7 +20,7 @@ public class PowerUpEscudo extends PowerUp {
 	}
 
 	public void visitJugador(Player jugador) {
-		jugador.setMiEscudo(new Escudo(jugador.getX(), jugador.getY() - 20, jugador.getNivel()));
+		jugador.setMiEscudo(new EscudoAntiKamikaze(jugador.getX(), jugador.getY() - 20, jugador.getNivel()));
 		jugador.getNivel().getBarraEscudo().setEscudo(jugador.getMiEscudo());
 		jugador.getNivel().addEntity(jugador.getMiEscudo());
 	}

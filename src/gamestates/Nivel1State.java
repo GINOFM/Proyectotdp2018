@@ -1,21 +1,14 @@
 package gamestates;
 
 import builders.AleatorioBuilder;
+import builders.HorizontalBuilder;
 import builders.KamikazeAleatorioBuilder;
 import builders.KamikazeAleatorioPerdibleBuilder;
 import builders.KamikazeDirigidoBuilder;
-import builders.KamikazeDirigidoTemportalBuilder;
-import builders.TestBuilder;
 import entidades.Barricada;
 import entidades.Enemy;
 import entidades.Entity;
 import entidades.Escombro;
-import entidades.Player;
-import inteligencias_disparo.InteligenciaDisparoSimple;
-import objetos.PowerUpArma;
-import objetos.PowerUpCongelar;
-import objetos.PowerUpMultiplicador;
-import objetos.PowerUpPocion;
 
 public class Nivel1State extends NivelState {
 
@@ -46,7 +39,7 @@ public class Nivel1State extends NivelState {
 		fabrica.setEnemyBuilder(new AleatorioBuilder());
 		fabrica.construirEnemigo(300, 240, this);
 		Enemy enemigo7 = fabrica.getEnemigo();
-		fabrica.setEnemyBuilder(new TestBuilder());
+		fabrica.setEnemyBuilder(new HorizontalBuilder());
 		fabrica.construirEnemigo(170, 20, this);
 		Enemy enemigo8 = fabrica.getEnemigo();
 
@@ -78,7 +71,4 @@ public class Nivel1State extends NivelState {
 
 	}
 
-	public Player getPlayer() {
-		return player;
-	}
 }

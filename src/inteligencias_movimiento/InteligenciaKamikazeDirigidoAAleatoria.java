@@ -4,9 +4,8 @@ import entidades.Entity;
 import entidades.Player;
 import inteligencias_disparo.InteligenciaDisparoSimple;
 
-public class InteligenciaKamikazeDirigidoAAleatoria implements InteligenciaMovimiento {
+public class InteligenciaKamikazeDirigidoAAleatoria extends InteligenciaMovimientoPlayerRelated {
 
-	protected Player jugador;
 	protected int velocidadX;
 	protected int velocidadY;
 

@@ -30,7 +30,6 @@ public class ArmaJugadorDisparoQuintuple extends ArmaJugador {
 
 	}
 
-	@Override
 	public void potenciar() {
 		jugador.setArmaJugador(new ArmaJugDispQuintPotenciado(jugador));
 	}

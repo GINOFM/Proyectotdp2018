@@ -78,6 +78,11 @@ public class Game extends Canvas implements Runnable {
 				updates = 0;
 				frames = 0;
 			}
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 		stop();
 	}

@@ -51,8 +51,4 @@ public class InteligenciaAleatoria implements InteligenciaMovimiento{
 		puntoy = randomNum;
 	}
 
-	public boolean dispara() {
-		return false;
-	}
-
 }

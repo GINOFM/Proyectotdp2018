@@ -6,11 +6,10 @@ import entidades.Entity;
 import entidades.Player;
 import inteligencias_disparo.InteligenciaDisparoDummy;
 
-public class InteligenciaAleatoriaPerdible implements InteligenciaMovimiento {
+public class InteligenciaAleatoriaPerdible extends InteligenciaMovimientoPlayerRelated {
 
 	private int puntox;
 	private int puntoy;
-	private Player jugador;
 
 	public InteligenciaAleatoriaPerdible(Player jugador) {
 		this.jugador = jugador;
@@ -59,10 +58,6 @@ public class InteligenciaAleatoriaPerdible implements InteligenciaMovimiento {
 	public void setPuntoy() {
 		int randomNum = ThreadLocalRandom.current().nextInt(1, 250 + 1);
 		puntoy = randomNum;
-	}
-
-	public boolean dispara() {
-		return false;
 	}
 
 }

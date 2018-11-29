@@ -5,7 +5,6 @@ import entidades.Entity;
 
 public abstract class DisparoEnemigo extends Entity{
 
-	protected int velocidadY;
 	protected int daño;
 	protected Colisionador col;
 

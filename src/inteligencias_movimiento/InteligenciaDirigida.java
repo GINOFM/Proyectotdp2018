@@ -3,8 +3,8 @@ package inteligencias_movimiento;
 import entidades.Entity;
 import entidades.Player;
 
-public class InteligenciaDirigida implements InteligenciaMovimiento {
-	protected Player jugador;
+public class InteligenciaDirigida extends InteligenciaMovimientoPlayerRelated {
+	
 	protected int velocidadX;
 	protected int velocidadY;
 

@@ -16,8 +16,8 @@ public class PowerUpCongelar extends PowerUp implements Runnable {
 
 	protected boolean activo;
 	protected LinkedList<Entity> entidades;
-	protected Map<Entity, InteligenciaMovimiento> mapeoEntidadInteligenciaMovimiento;
-	protected Map<Entity, InteligenciaDisparo> mapeoEntidadInteligenciaDisparo;
+	protected Map<Entity, InteligenciaMovimiento> mapeoEntIntMovimiento;
+	protected Map<Entity, InteligenciaDisparo> mapeoEntIntDisparo;
 
 	public PowerUpCongelar(int x, int y) {
 		super(x, y);
@@ -26,15 +26,14 @@ public class PowerUpCongelar extends PowerUp implements Runnable {
 
 	protected void initCraft() {
 		velocidadY = 1;
-		velocidadX = 3;
 		loadImage("resources/powerup_freeze.png");
 		setImageActual(images.get(0));
 		getImageDimensions();
 		col = new ColPowerUp(this);
 		activo = false;
 		entidades = new LinkedList<Entity>();
-		mapeoEntidadInteligenciaMovimiento = new HashMap<Entity, InteligenciaMovimiento>();
-		mapeoEntidadInteligenciaDisparo = new HashMap<Entity, InteligenciaDisparo>();
+		mapeoEntIntMovimiento = new HashMap<Entity, InteligenciaMovimiento>();
+		mapeoEntIntDisparo = new HashMap<Entity, InteligenciaDisparo>();
 	}
 
 	public void visitJugador(Player jugador) {
@@ -62,8 +61,8 @@ public class PowerUpCongelar extends PowerUp implements Runnable {
 		Entity entidad;
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
-			mapeoEntidadInteligenciaMovimiento.put(entidad, entidad.getInteligencia());
-			mapeoEntidadInteligenciaDisparo.put(entidad, entidad.getInteligenciaDisparo());
+			mapeoEntIntMovimiento.put(entidad, entidad.getInteligencia());
+			mapeoEntIntDisparo.put(entidad, entidad.getInteligenciaDisparo());
 			entidad.setInteligenciaMovimiento(new InteligenciaDummy());
 			entidad.setInteligenciaDisparo(new InteligenciaDisparoDummy());
 		}
@@ -74,8 +73,8 @@ public class PowerUpCongelar extends PowerUp implements Runnable {
 		}
 		for (int i = 0; i < entidades.size(); i++) {
 			entidad = entidades.get(i);
-			entidad.setInteligenciaMovimiento(mapeoEntidadInteligenciaMovimiento.get(entidad));
-			entidad.setInteligenciaDisparo(mapeoEntidadInteligenciaDisparo.get(entidad));
+			entidad.setInteligenciaMovimiento(mapeoEntIntMovimiento.get(entidad));
+			entidad.setInteligenciaDisparo(mapeoEntIntDisparo.get(entidad));
 		}
 	}
 
